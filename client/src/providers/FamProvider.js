@@ -1,59 +1,65 @@
-import React from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-const FamContext = React.createContext()
-export const FamUser = FamContext.User;
+const FamContext = React.createContext();
 
-export class FamProvider extends React.Component {
-  state = {fams: {}};
+export const FamConsumer = FamContext.Consumer;
 
-  handleRegister = (user, history) => {
-    axios.post("/api/auth", user)
+class FamProvider extends Component {
+  state = { fams: [] }
+  componentDidMount() {
+    axios.get('/api/fams')
       .then( res => {
-        this.setState({ user: res.data.data,});
-        history.push("/");
+        this.setState({ fams: res.data })
       })
-    .catch( res => {
-      console.log(res);
-    })
+      .catch( err => {
+        console.log(err)
+      })
   }
-
-  handleLogin = (user, history) => {
-    axios.post("/api/auth/sign_in", user)
+  addFam= (fam) => {
+    axios.post('/api/fams', { fam} )
       .then( res => {
-        this.setState({ user: res.data.data, });
-        history.push("/");
+        const { fams } = this.state
+        const fam = this.state.fams
+        this.setState({ fams: [...fams, res.data]})
       })
-      .catch( res => {
-        console.log(res);
+      .catch( err => {
+        console.log(err)
       })
-    }
-
-    handleLogout = (history) => {
-      axios.delete("/api/auth/sign_out")
-        .then( res => {
-          this.setState({ user: null, });
-          history.push('/login');
+  }
+  updateFam = (id, fam) => {
+    axios.put(`/api/fams/${id}`, { fam })
+      .then( res => {
+        const fams = this.state.fams.map( d => {
+          if (d.id === id) {
+            return res.data
+          }
+          return d
         })
-        .catch( res => {
-          console.log(res);
-        })
-    }
-
-    render() {
-      return (
-        <FamContext.Provider value={{
-          ...this.state,
-          authenticated: this.state.user !==null,
-          handleRegister: this.handleRegister,
-          handleLogin: this.handleLogin,
-          handleLogout: this.handleLogout,
-          setUser: (user) => this.setState({user, }),
-        }}>
-          { this.props.children }
-        </FamContext.Provider>
-      )
-    }
-  };
-
+        this.setState({ fams })
+      })
+      .catch( err => {
+        console.log(err)
+      })
+  }
+  deleteFam = (id) => {
+    axios.delete(`/api/fams/${id}`)
+      .then( res => {
+        const { fams } = this.state
+        this.setState({ fams: fams.filter( d => d.id !== id )})
+      })
+  }
+  render() {
+    return(
+      <FamContext.Provider value={{
+        ...this.state,
+        addFam: this.addFam,
+        updateFam: this.updateFam,
+        deleteFam: this.deleteFam,
+      }}>
+        { this.props.children }
+      </FamContext.Provider>
+    )
+  }
+}
 export default FamProvider;
