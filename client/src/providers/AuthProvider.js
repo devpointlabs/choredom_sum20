@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 const AuthContext = React.createContext()
 export const AuthConsumer = AuthContext.Consumer
 class AuthProvider extends Component {

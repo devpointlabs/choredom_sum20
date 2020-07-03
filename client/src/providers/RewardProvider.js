@@ -63,3 +63,4 @@ class RewardProvider extends Component {
 }
 
 export default RewardProvider;
+

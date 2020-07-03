@@ -5,7 +5,7 @@ const FamContext = React.createContext()
 export const FamUser = FamContext.User;
 
 export class FamProvider extends React.Component {
-  state = {user: null,};
+  state = {fams: {}};
 
   handleRegister = (user, history) => {
     axios.post("/api/auth", user)
