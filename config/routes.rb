@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :api do
     resources :fams
-    resources :fam_groups, :tasks, :rewards
-  # end
-  #   resources :users do
-  #     resources :fam_groups, :tasks, :rewards,
-  #   end
+    resources :users do
+      resources :fam_groups
+      resources :tasks
+      resources :rewards
+    end
   end
 end
+
