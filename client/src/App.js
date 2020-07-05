@@ -10,7 +10,7 @@ import NoMatch from './components/shared/NoMatch';
 import FetchUser from './components/auth/FetchUser';
 import AdminDash from './components/shared/AdminDash';
 // import Tasks from './components/Tasks';
-import Rewards from './components/Rewards';
+import Rewards from './components/rewards/Reward';
 import Fams from './components/fams/Fams';
 import FamShow from './components/fams/FamShow'
 import ProtectedRoute from './components/auth/ProtectedRoute';

@@ -8,7 +8,7 @@ const Fams = () => (
     {
       value => (
         <>
-          <h1>Families Page</h1>
+          <h1>Create Family Group</h1>
           <FamForm addFam={value.addFam} />
           <FamList fams={value.fams} />
         </>
