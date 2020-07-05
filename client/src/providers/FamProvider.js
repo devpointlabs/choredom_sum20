@@ -30,11 +30,11 @@ class FamProvider extends Component {
   updateFam = (id, fam) => {
     axios.put(`/api/fams/${id}`, { fam })
       .then( res => {
-        const fams = this.state.fams.map( d => {
-          if (d.id === id) {
+        const fams = this.state.fams.map( f => {
+          if (f.id === id) {
             return res.data
           }
-          return d
+          return f
         })
         this.setState({ fams })
       })
@@ -46,7 +46,7 @@ class FamProvider extends Component {
     axios.delete(`/api/fams/${id}`)
       .then( res => {
         const { fams } = this.state
-        this.setState({ fams: fams.filter( d => d.id !== id )})
+        this.setState({ fams: fams.filter( f => f.id !== id )})
       })
   }
   render() {
