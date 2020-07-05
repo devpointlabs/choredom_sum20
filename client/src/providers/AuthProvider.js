@@ -9,7 +9,7 @@ class AuthProvider extends Component {
     axios.post('/api/auth', user)
       .then( res => {
         this.setState({ user: res.data.data })
-        history.push("/")
+        history.push("/initial")
       })
       .catch( err => {
         console.log(err)
@@ -19,7 +19,7 @@ class AuthProvider extends Component {
     axios.post('/api/auth/sign_in', user)
       .then( res => {
         this.setState({ user: res.data.data })
-        history.push("/")
+        history.push("/admindash")
       })
       .catch( err => {
         console.log(err)
