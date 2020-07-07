@@ -13,6 +13,7 @@ import AdminDash from './components/shared/AdminDash';
 import Rewards from './components/rewards/Reward';
 import Fams from './components/fams/Fams';
 import FamShow from './components/fams/FamShow'
+import FamForm from './components/fams/FamForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 
 
@@ -29,6 +30,7 @@ const App = () => (
             <Route exact path="/register" component={Register} />
             <ProtectedRoute exact path='/initial' component={Initial} /> 
             <ProtectedRoute exact path='/admindash' component={AdminDash} /> 
+            <ProtectedRoute exact path='/familyform' component={FamForm} /> 
             {/* <Route exact path="/tasks" component={Tasks} />
             <Route exact path="/rewards" component={Rewards} /> */}
             <Route exact path="/fams" component={Fams} /> 
