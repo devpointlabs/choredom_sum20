@@ -1,56 +1,45 @@
 class FamGroupController < FamilyController
-  before_action :set_family
-  before_action :set_name only: [:show, :edit, :update, :destroy]
-  before_action :set_admins only: [:show, :edit, :update, :destroy]
+  before_action :set_fam
+  before_action :set_famgroup only: [:update, :destroy]
 
   def index
-    @fam_members = @famgroup.users.all
-  end
-
-  def show
-  end
-
-  def new
-    @user = @famgroup.users.new
-  end
-
-  def edit
+    render json: @fam.famgroups
   end
 
   def create
-    @user = @famgroup.user.new(user_params)
-    
-    if @user.save
-      redirect_to @user, notice: 'Family Member is Added.'
+    @users = User.all - @fam.users
+    @famgroup = @fam.famgroups.new(famgroup_params)
+    if @famgroup.save
+      render json: @famgroup
     else
-      render :new
+      render json: { errors: @famgroup.errors }, status: unprocessable_entity
     end
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to @user, notice: 'Family Member is Updated.'
+    if @famgroup.update(famgroup_params)
+      render json: @famgroup
     else
-      render :edit
+      render json: { errors: @famgroup.errors }, status: unprocessable_entity
     end
   end
 
   def destroy
-    @student.destroy
-    redirect_to famgroup_users_path(@famgroup), notice: 'Family Member has been removed.'
+    @famgroup.destroy
+    render json: { message: 'This Family Group has been removed'}
   end
 
   private
 
-    def set_famgroup
-      @famgroup = Famgroup.find(params[:famgroup_id])
+    def set_fam
+      @fam = Fam.find(params[:fam_id])
     end
 
     def set_famgroup
-      @user= @famgroup.users.find(params[:id])
+      @famgroup = @fam.famgroups.find(params[:id])
     end
 
-    def user_params
-      params.require(:user).permit(:name, :email, :points, :admin)
+    def famgroup_params
+      params.require(:famgroup).permit(:last_name)
     end
 end

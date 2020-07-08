@@ -16,7 +16,7 @@ class Api::FamsController < ApplicationController
   def update
     @fam = Fam.find(params[:id])
     if @fam.update(fam_params)
-      render json: modelname
+      render json: @fam
     else 
     render json: { errors: @fam.errors }, status: unprocessable_entity
     end
