@@ -20,9 +20,6 @@ import RewardShow from './components/rewards/RewardShow';
 import RewardForm from './components/rewards/RewardForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 
-
-
-
 const App = () => (
   <>
     <Navbar/>
@@ -37,10 +34,10 @@ const App = () => (
             <ProtectedRoute exact path='/familyform' component={FamForm} /> 
             <ProtectedRoute exact path='/rewardform' component={RewardForm} />
             <ProtectedRoute exact path='/taskform' component={TaskForm} />
-            <Route exact path="/tasks" component={Tasks} />
             <Route exact path='/tasks/:id' component={TaskShow} />
-            <Route exact path="/rewards" component={Rewards} />
             <Route exact path='/rewards/:id' component={RewardShow} />
+            <ProtectedRoute exact path='/rewards' component={Rewards} /> 
+            <ProtectedRoute exact path="/tasks" component={Tasks} />
             <Route exact path="/fams" component={Fams} /> 
             <Route exact path='/fams/:id' component={FamShow} />
             <Route component={NoMatch} />

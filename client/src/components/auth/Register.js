@@ -1,6 +1,7 @@
 import React from 'react';
 import { AuthConsumer, } from "../../providers/AuthProvider";
 import { Button, Form, Segment, Header, } from 'semantic-ui-react';
+import { Link, } from 'react-router-dom';
 
 class Register extends React.Component {
   state = { email: '', password: '', passwordConfirmation: '', admin: true };
@@ -26,7 +27,7 @@ class Register extends React.Component {
     
     return (
       <Segment basic>
-        <Header as='h1' textAlign='center'>Register</Header>
+        <Header as='h1' textAlign='center'>(icon) Choredom</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Input
             label="Email"
@@ -55,8 +56,13 @@ class Register extends React.Component {
             type='password'
             onChange={this.handleChange}
           />
+          <Segment textAlign='left' basic>
+            <Button primary type='submit'>Register</Button>
+          </Segment>
           <Segment textAlign='center' basic>
-            <Button primary type='submit'>Submit</Button>
+            <Button as={Link} to="/login">
+              I already have an account
+            </Button>
           </Segment>
         </Form>
       </Segment>

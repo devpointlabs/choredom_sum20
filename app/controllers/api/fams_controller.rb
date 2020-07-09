@@ -2,7 +2,7 @@ class Api::FamsController < ApplicationController
   before_action :set_user
 
   def index
-    render json: @user.fams
+    render json: Fam.find(params[:id]).users
   end
   
   # def show
