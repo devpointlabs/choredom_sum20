@@ -5,13 +5,10 @@ import RewardForm from './RewardForm';
 import RewardList from './RewardList';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Button, Modal } from 'semantic-ui-react';
-
 class Rewards extends React.Component {
-
   componentDidMount() {
     this.props.getAllRewards(this.props.user.id)
   }
-
   render() {
     const {addReward, rewards, user} = this.props
     return (
@@ -29,12 +26,10 @@ class Rewards extends React.Component {
               <RewardList user={user} rewards={rewards} />
               : <p>No Rewards</p>
           }
-          
       </>
     )
   }
 }
-
 const ConnectedRewards = (props) => (
   <RewardConsumer>
     {
@@ -44,7 +39,6 @@ const ConnectedRewards = (props) => (
     }
   </RewardConsumer>
 )
-
 const MegaRewards = (props) => (
   <AuthConsumer>
     {
@@ -52,13 +46,4 @@ const MegaRewards = (props) => (
     }
   </AuthConsumer>
 )
-
-
 export default MegaRewards;
-
-{/* <Modal trigger={<Button>Create Reward</Button>} centered={false}>
-<Modal.Header>Create New Reward</Modal.Header>
-<Modal.Content>
-  <RewardForm addReward={addReward} user_id={user.id} />  
-</Modal.Content>
-</Modal> */}
