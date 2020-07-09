@@ -12,6 +12,7 @@ class RewardProvider extends Component {
     axios.get(`/api/users/${user_id}/rewards`)
       .then( res => {
         this.setState({ rewards: res.data })
+        // setloaded(true)
       })
       .catch( err => console.log(err) )
   }
@@ -51,6 +52,7 @@ class RewardProvider extends Component {
   render() {
     return(
       <RewardContext.Provider value={{
+        ...this.state,
         getAllRewards: this.getAllRewards,
         addReward: this.addReward,
         updateReward: this.updateReward,

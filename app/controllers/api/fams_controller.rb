@@ -1,9 +1,14 @@
 class Api::FamsController < ApplicationController
+  before_action :set_user
 
   def index
     render json: Fam.find(params[:id]).users
   end
   
+  # def show
+  #   render json: @user.fams = Fam.find(params[:id])
+  #  end
+
   def create
     @fam = Fam.new(fam_params)
     if @fam.save
@@ -22,9 +27,15 @@ class Api::FamsController < ApplicationController
     end
   end
 
-private
-  def fam_params
-    params.require(:fam).permit(:fam_name, :fam_admins, :fam_members)
-  end
+  private
 
+    def fam_params
+      params.require(:fam).permit(:fam_name, :fam_admins, :fam_members)
+    end
+
+    def set_user
+      @user = current_user
+    end
+
+  
 end

@@ -10,7 +10,8 @@ class Api::TasksController < ApplicationController
     if @task.save
     render json: @task
     else
-    render json: { errors: @task.errors }, status: unprocessable_entity
+    render json: { errors: @task.errors }, status: :unprocessable_entity
+    end
   end
   
   def update
@@ -18,7 +19,8 @@ class Api::TasksController < ApplicationController
     if @task.update(task_params)
     render json: @task
     else
-    render json: { errors: @task.errors }, status: unprocessable_entity
+    render json: { errors: @task.errors }, status: :unprocessable_entity
+    end
   end
   
   def destroy
@@ -36,5 +38,5 @@ class Api::TasksController < ApplicationController
     @user = current_user
   end
   
-  end
+  
 end

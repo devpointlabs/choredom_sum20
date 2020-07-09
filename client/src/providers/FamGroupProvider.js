@@ -51,6 +51,7 @@ class FamGroupProvider extends Component {
   render() {
     return(
       <FamGroupContext.Provider value={{
+        ...this.state,
         getAllFamGroups: this.getAllFamGroups,
         addFamGroup: this.addFamGroup,
         updateFamGroup: this.updateFamGroup,
@@ -62,4 +63,4 @@ class FamGroupProvider extends Component {
   }
 }
 
-export default FamGroupProvider;a
+export default FamGroupProvider;

@@ -11,7 +11,7 @@ const FamList = ({ fams }) => (
             pathname: `/fams/${f.id}`,
             state: {...f}
           }}>
-            { f.name }
+            { f.fam_name }
           </Link>
           <br />
         </>

@@ -10,7 +10,8 @@ class Api::RewardsController < ApplicationController
     if @reward.save
     render json: @reward
     else
-    render json: { errors: @reward.errors }, status: unprocessable_entity
+    render json: { errors: @reward.errors }, status: :unprocessable_entity
+    end
   end
   
   def update
@@ -18,7 +19,8 @@ class Api::RewardsController < ApplicationController
     if @reward.update(reward_params)
     render json: @reward
     else
-    render json: { errors: @reward.errors }, status: unprocessable_entity
+    render json: { errors: @reward.errors }, status: :unprocessable_entity
+    end
   end
   
   def destroy
@@ -36,6 +38,6 @@ class Api::RewardsController < ApplicationController
     @user = current_user
   end
   
-  endcd
+  
   
 end
