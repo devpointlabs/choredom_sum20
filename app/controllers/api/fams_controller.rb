@@ -1,7 +1,7 @@
 class Api::FamsController < ApplicationController
 
   def index
-    render json:
+    render json: Fam.find(params[:id]).users
   end
   
   def create

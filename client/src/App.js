@@ -9,15 +9,12 @@ import Navbar from './components/shared/Navbar';
 import NoMatch from './components/shared/NoMatch';
 import FetchUser from './components/auth/FetchUser';
 import AdminDash from './components/shared/AdminDash';
-// import Tasks from './components/Tasks';
+import Tasks from './components/tasks/Tasks';
 import Rewards from './components/rewards/Reward';
 import Fams from './components/fams/Fams';
 import FamShow from './components/fams/FamShow'
 import FamForm from './components/fams/FamForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-
-
-
 
 const App = () => (
   <>
@@ -31,8 +28,8 @@ const App = () => (
             <ProtectedRoute exact path='/initial' component={Initial} /> 
             <ProtectedRoute exact path='/admindash' component={AdminDash} /> 
             <ProtectedRoute exact path='/familyform' component={FamForm} /> 
-            {/* <Route exact path="/tasks" component={Tasks} />
-            <Route exact path="/rewards" component={Rewards} /> */}
+            <ProtectedRoute exact path='/rewards' component={Rewards} /> 
+            <ProtectedRoute exact path="/tasks" component={Tasks} />
             <Route exact path="/fams" component={Fams} /> 
             <Route exact path='/fams/:id' component={FamShow} />
             <Route component={NoMatch} />
