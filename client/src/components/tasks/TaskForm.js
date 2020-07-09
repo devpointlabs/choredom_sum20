@@ -20,10 +20,10 @@ class TaskForm extends Component {
     e.preventDefault()
     if (this.props.id) {
       const { id, history } = this.props
-      this.props.updateTask(id, this.state, history)
+      this.props.updateTask(this.props.user_id, id, this.state, history)
       this.props.toggleUpdate()
     } else {
-      this.props.addTask(this.state)
+      this.props.addTask(this.props.user_id, this.state)
     }
     this.setState({ task_name: '', task_description: '', task_value: '' })
   }

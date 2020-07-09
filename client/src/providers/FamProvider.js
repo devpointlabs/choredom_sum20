@@ -7,6 +7,7 @@ export const FamConsumer = FamContext.Consumer;
 
 class FamProvider extends Component {
   state = { fams: [] }
+
   componentDidMount() {
     axios.get('/api/fams')
       .then( res => {
@@ -16,17 +17,19 @@ class FamProvider extends Component {
         console.log(err)
       })
   }
+
   addFam= (fam) => {
-    axios.post('/api/fams', { fam} )
+    axios.post('/api/fams', { fam } )
       .then( res => {
         const { fams } = this.state
-        const fam = this.state.fams
+        
         this.setState({ fams: [...fams, res.data]})
       })
       .catch( err => {
         console.log(err)
       })
   }
+
   updateFam = (id, fam) => {
     axios.put(`/api/fams/${id}`, { fam })
       .then( res => {
@@ -42,6 +45,7 @@ class FamProvider extends Component {
         console.log(err)
       })
   }
+
   deleteFam = (id) => {
     axios.delete(`/api/fams/${id}`)
       .then( res => {
@@ -49,6 +53,7 @@ class FamProvider extends Component {
         this.setState({ fams: fams.filter( f => f.id !== id )})
       })
   }
+
   render() {
     return(
       <FamContext.Provider value={{
@@ -62,4 +67,5 @@ class FamProvider extends Component {
     )
   }
 }
+
 export default FamProvider;

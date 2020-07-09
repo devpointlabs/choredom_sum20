@@ -51,6 +51,7 @@ class TaskProvider extends Component {
   render() {
     return(
       <TaskContext.Provider value={{
+        ...this.state,
         getAllTasks: this.getAllTasks,
         addTask: this.addTask,
         updateTask: this.updateTask,

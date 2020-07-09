@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 
 class RewardForm extends Component {
-  state = { reward_name: '', reward_description: '', reward_cost: '', reward_claimed: '', reward_used: '' }
+  state = { reward_name: '', reward_description: '', reward_cost: '', reward_claimed: false, reward_used: false }
 
   componentDidMount() {
     if (this.props.id) {
@@ -20,16 +20,16 @@ class RewardForm extends Component {
     e.preventDefault()
     if (this.props.id) {
       const { id, history } = this.props
-      this.props.updateReward(id, this.state, history)
+      this.props.updateReward(this.props.user_id, id, this.state, history)
       this.props.toggleUpdate()
     } else {
-      this.props.addReward(this.state)
+      this.props.addReward(this.props.user_id, this.state)
     }
     this.setState({ reward_name: '', reward_description: '', reward_cost: '', reward_claimed: '', reward_used: '' })
   }
 
   render() {
-    const { reward_name, reward_description, reward_cost, reward_claimed, reward_used } = this.state
+    const { reward_name, reward_description, reward_cost, } = this.state
     return(
       <Form onSubmit={this.handleSubmit}>
         <Form.Input
@@ -51,20 +51,6 @@ class RewardForm extends Component {
           value={reward_cost}
           onChange={this.handleChange}
           label='Reward Cost'
-          required
-        />
-         <Form.Input
-          name='reward_claimed'
-          value={reward_claimed}
-          onChange={this.handleChange}
-          label='Reward Claimed'
-          required
-        />
-         <Form.Input
-          name='reward_used'
-          value={reward_used}
-          onChange={this.handleChange}
-          label='Reward Used'
           required
         />
         <Form.Button>Submit</Form.Button>
