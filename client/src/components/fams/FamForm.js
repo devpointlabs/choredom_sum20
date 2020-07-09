@@ -24,6 +24,11 @@ class FamForm extends Component {
       this.props.toggleUpdate()
     } else {
       this.props.addFam(this.state)
+      //const FamGroupName = { last_name: this.state.fam_name }
+      //this.props.addFamGroup(fam_id, FamGroupName)
+      //
+      //Add Fam Group
+      //Need to pass in the Fam and the User through association
     }
     this.setState({ fam_name: '', fam_admins: '', fam_members: '' })
   }
@@ -39,7 +44,7 @@ class FamForm extends Component {
           label='Family Name'
           required
         />
-        <Form.Input
+        {/* <Form.Input
           name='fam_admins'
           value={fam_admins}
           onChange={this.handleChange}
@@ -52,7 +57,7 @@ class FamForm extends Component {
           onChange={this.handleChange}
           label='Family Members'
           required
-        />
+        /> */}
         <Form.Button>Submit</Form.Button>
       </Form>
     )

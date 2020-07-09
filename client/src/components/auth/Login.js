@@ -56,6 +56,7 @@ export default class ConnectedLogin extends React.Component {
       <AuthConsumer>
         { auth => <Login {...this.props} auth={auth} />}
       </AuthConsumer>
+
     )
   }
 }
