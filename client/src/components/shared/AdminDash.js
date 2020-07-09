@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Button, Modal } from 'semantic-ui-react';
 import Fams from '../fams/Fams';
-import Rewards from '../rewards/Reward';
+import Rewards from '../rewards/Rewards';
 import Tasks from '../tasks/Tasks'
 
 
