@@ -8,14 +8,24 @@ export const FamConsumer = FamContext.Consumer;
 class FamProvider extends Component {
   state = { fams: [] }
 
-  componentDidMount() {
-    axios.get('/api/fams')
+  // componentDidMount() {
+  //   axios.get('/api/fams')
+  //     .then( res => {
+  //       this.setState({ fams: res.data })
+  //     })
+  //     .catch( err => {
+  //       console.log(err)
+  //     })
+  // }
+
+  // how is this different from componentDidMount?
+
+  getAllFams= (user_id) => {
+    axios.get(`/api/users/${user_id}/fams`)
       .then( res => {
-        this.setState({ fams: res.data })
+        this.setState({ famgroups: res.data })
       })
-      .catch( err => {
-        console.log(err)
-      })
+      .catch( err => console.log(err) )
   }
 
   addFam= (fam) => {

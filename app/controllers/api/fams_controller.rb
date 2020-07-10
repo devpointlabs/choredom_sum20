@@ -4,27 +4,31 @@ class Api::FamsController < ApplicationController
   def index
     render json: Fam.find(params[:id]).users
   end
-  
-  # def show
-  #   render json: @user.fams = Fam.find(params[:id])
-  #  end
 
+  # unprocessable_entity had no colon before it
   def create
     @fam = Fam.new(fam_params)
     if @fam.save
       render json: @fam
     else
-      render json: { errors: @fam.errors }, status: unprocessable_entity
+      render json: { errors: @fam.errors }, status: :unprocessable_entity
     end
   end
   
+  # unprocessable_entity had no colon before it
   def update
     @fam = Fam.find(params[:id])
     if @fam.update(fam_params)
       render json: @fam
     else 
-    render json: { errors: @fam.errors }, status: unprocessable_entity
+    render json: { errors: @fam.errors }, status: :unprocessable_entity
     end
+  end
+
+  # added destroy
+  def destroy
+    Fam.find(params[:id]).destroy
+    render json: { messsage: 'Fam deleted' }
   end
 
   private

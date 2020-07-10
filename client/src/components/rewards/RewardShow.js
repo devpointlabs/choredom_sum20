@@ -9,7 +9,7 @@ class RewardShow extends Component {
   toggleUpdate = () => this.setState({ editing: !this.state.editing })
 
   render() {
-    const { id, reward_name, reward_description, reward_cost, reward_claimed, reward_used } = this.props.location.state
+    const { user_id, id, reward_name, reward_description, reward_cost, reward_claimed, reward_used } = this.props.location.state
     const { editing } = this.state
     const { updateReward, deleteReward, history } = this.props
     return(
@@ -22,11 +22,10 @@ class RewardShow extends Component {
         { editing ?
             <RewardForm 
               id={id}
-              rewardName={reward_name}
-              rewardDescription={reward_description}
-              rewardCost={reward_cost}
-              rewardClaimed={reward_claimed}
-              rewardUsed={reward_used}
+              user_id={user_id}
+              reward_name={reward_name}
+              reward_description={reward_description}
+              reward_cost={reward_cost}
               updateReward={updateReward}
               toggleUpdate={this.toggleUpdate}
               history={history}
@@ -36,7 +35,7 @@ class RewardShow extends Component {
             Edit
           </Button>
         }
-        <Button onClick={() => deleteReward(id, history)}>
+        <Button onClick={() => deleteReward(user_id, id, history)}>
           Delete
         </Button>
       </>

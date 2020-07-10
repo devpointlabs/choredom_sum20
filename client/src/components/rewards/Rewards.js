@@ -12,6 +12,7 @@ class Rewards extends React.Component {
   }
 
   render() {
+    {/* didnt have user being passed down as a prop */}
     const {addReward, rewards, user} = this.props
     return (
       <>
@@ -19,7 +20,7 @@ class Rewards extends React.Component {
           <RewardForm addReward={addReward} user_id={user.id} />
           {
             rewards ? 
-              <RewardList rewards={rewards} />
+              <RewardList user={user} rewards={rewards} />
               : <p>No Rewards</p>
           }
       </>
