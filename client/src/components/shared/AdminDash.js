@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button, Modal } from 'semantic-ui-react';
+import { Container, Button, Modal, Grid } from 'semantic-ui-react';
 import Fams from '../fams/Fams';
 import Rewards from '../rewards/Rewards';
 import Tasks from '../tasks/Tasks'
@@ -8,20 +8,20 @@ import Tasks from '../tasks/Tasks'
 const AdminDash = () => (
   <>
     <h1>Admin Dashboard</h1>
+    
+    {/* <Grid.Column key={i}>
+      <Image src='/images/wireframe/image.png' />
+    </Grid.Column> */}
     <p> My Family Section Across Top Row </p>
     <div>
       < Fams />
     </div>
-    <p> Rewards Section Left Column </p>
-    {/* Cannot read property 'map' of undefined */}
-    {/* <div>
+    <div>
       < Rewards />
-    </div> */}
-    <p> Tasks Section Right Column </p>
-    {/* Cannot read property 'map' of undefined */}
-    {/* <div>
+    </div>
+    <div>
       < Tasks />
-    </div> */}
+    </div>
   </>
   )
 export default AdminDash;

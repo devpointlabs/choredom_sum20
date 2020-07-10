@@ -9,7 +9,7 @@ class TaskShow extends Component {
   toggleUpdate = () => this.setState({ editing: !this.state.editing })
 
   render() {
-    const { id, task_name, task_description, task_value, task_complete } = this.props.location.state
+    const { user_id, id, task_name, task_description, task_value, } = this.props.location.state
     const { editing } = this.state
     const { updateTask, deleteTask, history } = this.props
     return(
@@ -17,9 +17,9 @@ class TaskShow extends Component {
         <h1>{task_name}</h1>
         <h3>{task_description}</h3>
         <h4>{task_value}</h4>
-        <h5>{task_complete}</h5>
         { editing ?
             <TaskForm 
+              user_id={user_id}
               id={id}
               task_name={task_name}
               task_description={task_description}
@@ -33,7 +33,7 @@ class TaskShow extends Component {
             Edit
           </Button>
         }
-        <Button onClick={() => deleteTask(id, history)}>
+        <Button onClick={() => deleteTask(user_id, id, history)}>
           Delete
         </Button>
       </>
