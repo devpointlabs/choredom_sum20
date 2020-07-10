@@ -6,8 +6,8 @@ class RewardForm extends Component {
 
   componentDidMount() {
     if (this.props.id) {
-      const { reward_name, reward_description, reward_cost, reward_claimed, reward_used } = this.props
-      this.setState({ reward_name, reward_description, reward_cost, reward_claimed, reward_used })
+      const { reward_name, reward_description, reward_cost, } = this.props
+      this.setState({ reward_name, reward_description, reward_cost, })
     }
   }
 

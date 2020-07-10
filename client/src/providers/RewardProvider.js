@@ -25,8 +25,9 @@ class RewardProvider extends Component {
       })
       .catch( err => console.log(err) )
   }
-
-  updateReward = (user_id, id, reward) => {
+  
+  // we wernt pulling in history as a prop from the handleSubmit
+  updateReward = (user_id, id, reward, history) => {
     axios.put(`/api/users/${user_id}/rewards/${id}`, { reward } )
     .then( res => {
       const rewards = this.state.rewards.map( t => {
@@ -36,15 +37,17 @@ class RewardProvider extends Component {
         return t
       })
       this.setState({ rewards: rewards })
+      history.push('/rewards')
     })
     .catch( err => console.log(err) )
   }
 
-  deleteReward = (user_id, id) => {
+  deleteReward = (user_id, id, history) => {
     axios.delete(`/api/users/${user_id}/rewards/${id}`)
       .then( res => {
         const { rewards } = this.state
         this.setState({ rewards: rewards.filter( t => t.id !== id )})
+        history.push('/rewards')
       })
       .catch( err => console.log(err) )
   }

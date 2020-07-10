@@ -21,9 +21,9 @@ class TaskShow extends Component {
         { editing ?
             <TaskForm 
               id={id}
-              taskName={task_name}
-              taskDescription={task_description}
-              taskComplete={task_complete}
+              task_name={task_name}
+              task_description={task_description}
+              task_value={task_value}
               updateTask={updateTask}
               toggleUpdate={this.toggleUpdate}
               history={history}
