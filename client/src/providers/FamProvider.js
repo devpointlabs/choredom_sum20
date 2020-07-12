@@ -40,7 +40,7 @@ class FamProvider extends Component {
       })
   }
 
-  updateFam = (id, fam) => {
+  updateFam = (id, fam, history) => {
     axios.put(`/api/fams/${id}`, { fam })
       .then( res => {
         const fams = this.state.fams.map( f => {
@@ -49,19 +49,22 @@ class FamProvider extends Component {
           }
           return f
         })
-        this.setState({ fams })
+        this.setState({ fams: fams })
+        history.push('/fams')
       })
       .catch( err => {
         console.log(err)
       })
   }
 
-  deleteFam = (id) => {
+  deleteFam = (id, history) => {
     axios.delete(`/api/fams/${id}`)
       .then( res => {
         const { fams } = this.state
         this.setState({ fams: fams.filter( f => f.id !== id )})
+        history.push('/fams')
       })
+      .catch( err => console.log(err) )
   }
 
   render() {

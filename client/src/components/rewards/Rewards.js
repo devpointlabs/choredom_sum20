@@ -1,4 +1,4 @@
-
+//This becomes the Manage Reward page
 import React from 'react';
 import { RewardConsumer } from '../../providers/RewardProvider';
 import RewardForm from './RewardForm';
