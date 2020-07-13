@@ -14,7 +14,6 @@ class Api::RewardsController < ApplicationController
     end
   end
   
-
   def update
     @reward = @user.rewards.find(params[:id])
     if @reward.update(reward_params)

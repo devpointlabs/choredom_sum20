@@ -3,6 +3,7 @@ import { TaskConsumer } from '../../providers/TaskProvider';
 import TaskForm from './TaskForm';
 import TaskList from './TaskList';
 import { AuthConsumer } from '../../providers/AuthProvider';
+import { Button, Modal } from 'semantic-ui-react';
 
 class Tasks extends React.Component {
   
@@ -15,7 +16,14 @@ class Tasks extends React.Component {
     return (
     <>
       <h1>Tasks Page</h1>
-        <TaskForm addTask={addTask} user_id={user.id} />
+        
+      <Modal trigger={<Button>Create Task</Button>} centered={false}>
+        <Modal.Header>Create New Task</Modal.Header>
+          <Modal.Content>
+            <TaskForm addTask={addTask} user_id={user.id} />
+          </Modal.Content>
+      </Modal>
+      <br/>
         {
           tasks ?
             <TaskList tasks={tasks}/>

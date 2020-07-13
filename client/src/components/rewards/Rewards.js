@@ -1,9 +1,10 @@
-
+//This becomes the Manage Reward page
 import React from 'react';
 import { RewardConsumer } from '../../providers/RewardProvider';
 import RewardForm from './RewardForm';
 import RewardList from './RewardList';
 import { AuthConsumer } from '../../providers/AuthProvider';
+import { Button, Modal } from 'semantic-ui-react';
 
 class Rewards extends React.Component {
 
@@ -12,17 +13,23 @@ class Rewards extends React.Component {
   }
 
   render() {
-    {/* didnt have user being passed down as a prop */}
     const {addReward, rewards, user} = this.props
     return (
       <>
        <h1>Rewards</h1>
-          <RewardForm addReward={addReward} user_id={user.id} />
+        <Modal trigger={<Button>Create Reward</Button>} centered={false}>
+              <Modal.Header>Create New Reward</Modal.Header>
+              <Modal.Content>
+                <RewardForm addReward={addReward} user_id={user.id} />  
+              </Modal.Content>
+            </Modal>
+          <br/>
           {
             rewards ? 
               <RewardList user={user} rewards={rewards} />
               : <p>No Rewards</p>
           }
+          
       </>
     )
   }
@@ -48,3 +55,10 @@ const MegaRewards = (props) => (
 
 
 export default MegaRewards;
+
+{/* <Modal trigger={<Button>Create Reward</Button>} centered={false}>
+<Modal.Header>Create New Reward</Modal.Header>
+<Modal.Content>
+  <RewardForm addReward={addReward} user_id={user.id} />  
+</Modal.Content>
+</Modal> */}

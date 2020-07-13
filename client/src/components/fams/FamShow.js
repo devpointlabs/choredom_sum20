@@ -9,7 +9,7 @@ class FamShow extends Component {
   toggleUpdate = () => this.setState({ editing: !this.state.editing })
 
   render() {
-    const { fam_id, fam_name, fam_admins, fam_members } = this.props.location.state
+    const { id, user_id, fam_name, fam_admins, fam_members } = this.props.location.state
     const { editing } = this.state
     const { updateFam, deleteFam, history } = this.props
     return(
@@ -19,10 +19,11 @@ class FamShow extends Component {
         <h4>{fam_members}</h4>
         { editing ?
             <FamForm 
-              id={fam_id}
-              famName={fam_name}
-              famAdmins={fam_admins}
-              famMembers={fam_members}
+              user_id={user_id}  
+              id={id}
+              fam_name={fam_name}
+              fam_admins={fam_admins}
+              fam_members={fam_members}
               updateFam={updateFam}
               toggleUpdate={this.toggleUpdate}
               history={history}
@@ -32,7 +33,7 @@ class FamShow extends Component {
             Edit
           </Button>
         }
-        <Button onClick={() => deleteFam(fam_id, history)}>
+        <Button onClick={() => deleteFam(user_id, id, history)}>
           Delete
         </Button>
       </>

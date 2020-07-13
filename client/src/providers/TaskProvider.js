@@ -25,7 +25,7 @@ class TaskProvider extends Component {
       .catch( err => console.log(err) )
   }
 
-  updateTask = (user_id, id, task) => {
+  updateTask = (user_id, id, task, history) => {
     axios.put(`/api/users/${user_id}/tasks/${id}`, { task } )
     .then( res => {
       const tasks = this.state.tasks.map( t => {
@@ -35,15 +35,17 @@ class TaskProvider extends Component {
         return t
       })
       this.setState({ tasks: tasks })
+      history.push('/tasks')
     })
     .catch( err => console.log(err) )
   }
 
-  deleteTask = (user_id, id) => {
+  deleteTask = (user_id, id, history) => {
     axios.delete(`/api/users/${user_id}/tasks/${id}`)
       .then( res => {
         const { tasks } = this.state
         this.setState({ tasks: tasks.filter( t => t.id !== id )})
+        history.push('/tasks')
       })
       .catch( err => console.log(err) )
   }
