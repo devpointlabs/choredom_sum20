@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
+import { FamGroupConsumer } from '../../providers/FamGroupProvider';
 
 class FamForm extends Component {
   state = { fam_name: '', fam_admins: '', fam_members: '' }
@@ -23,12 +24,8 @@ class FamForm extends Component {
       this.props.updateFam(id, this.state, history)
       this.props.toggleUpdate()
     } else {
-      this.props.addFam(this.state)
-      //const FamGroupName = { last_name: this.state.fam_name }
-      //this.props.addFamGroup(fam_id, FamGroupName)
-      //
-      //Add Fam Group
-      //Need to pass in the Fam and the User through association
+      const FamGroupName = { last_name: this.state.fam_name, user_id: this.props.userId }
+      this.props.addFam(this.state, FamGroupName, this.props.addFamGroup)
     }
     this.setState({ fam_name: '', fam_admins: '', fam_members: '' })
   }
@@ -64,4 +61,14 @@ class FamForm extends Component {
   }
 }
 
-export default FamForm;
+const ConnectedFamForm = ( props ) => (
+  <FamGroupConsumer>
+    { 
+      values => (
+        <FamForm {...props} {...values} />
+      )
+    }
+  </FamGroupConsumer>
+)
+
+export default ConnectedFamForm;

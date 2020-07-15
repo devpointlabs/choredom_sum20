@@ -1,18 +1,17 @@
-class FamGroupController < FamilyController
+class Api::FamgroupsController < ApplicationController
   before_action :set_fam
-  before_action :set_famgroup only: [:update, :destroy]
+  before_action :set_famgroup, only: [:update, :destroy]
 
   def index
     render json: @fam.famgroups
   end
 
   def create
-    @users = User.all - @fam.users
     @famgroup = @fam.famgroups.new(famgroup_params)
     if @famgroup.save
       render json: @famgroup
     else
-      render json: { errors: @famgroup.errors }, status: unprocessable_entity
+      render json: { errors: @famgroup.errors }, status: :unprocessable_entity
     end
   end
 
@@ -20,7 +19,7 @@ class FamGroupController < FamilyController
     if @famgroup.update(famgroup_params)
       render json: @famgroup
     else
-      render json: { errors: @famgroup.errors }, status: unprocessable_entity
+      render json: { errors: @famgroup.errors }, status: :unprocessable_entity
     end
   end
 
@@ -40,6 +39,6 @@ class FamGroupController < FamilyController
     end
 
     def famgroup_params
-      params.require(:famgroup).permit(:last_name)
+      params.require(:famgroup).permit(:last_name, :user_id)
     end
 end
