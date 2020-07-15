@@ -23,12 +23,21 @@ class Register extends React.Component {
   }
   
   render() {
-    const { email, password, passwordConfirmation, } = this.state;
+    const { email, password, passwordConfirmation, name, } = this.state;
     
     return (
       <Segment basic>
         <Header as='h1' textAlign='center'>(icon) Choredom</Header>
         <Form onSubmit={this.handleSubmit}>
+          <Form.Input
+            label="Name"
+            autoFocus
+            required     
+            name='name'
+            value={name}
+            placeholder='Name'
+            onChange={this.handleChange}
+          />
           <Form.Input
             label="Email"
             required
@@ -56,6 +65,7 @@ class Register extends React.Component {
             type='password'
             onChange={this.handleChange}
           />
+          
           <Segment textAlign='left' basic>
             <Button primary type='submit'>Register</Button>
           </Segment>

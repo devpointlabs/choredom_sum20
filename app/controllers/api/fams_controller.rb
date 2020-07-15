@@ -5,7 +5,6 @@ class Api::FamsController < ApplicationController
     render json: Fam.find(params[:id]).users
   end
 
-  # unprocessable_entity had no colon before it
   def create
     @fam = Fam.new(fam_params)
     if @fam.save
@@ -15,7 +14,6 @@ class Api::FamsController < ApplicationController
     end
   end
   
-  # unprocessable_entity had no colon before it
   def update
     @fam = Fam.find(params[:id])
     if @fam.update(fam_params)
@@ -25,7 +23,6 @@ class Api::FamsController < ApplicationController
     end
   end
 
-  # added destroy
   def destroy
     Fam.find(params[:id]).destroy
     render json: { messsage: 'Fam deleted' }
