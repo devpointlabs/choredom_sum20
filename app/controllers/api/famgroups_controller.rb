@@ -7,7 +7,6 @@ class Api::FamgroupsController < ApplicationController
   end
 
   def create
-    # @users = User.all - @fam.users
     @famgroup = @fam.famgroups.new(famgroup_params)
     if @famgroup.save
       render json: @famgroup

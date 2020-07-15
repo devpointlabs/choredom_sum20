@@ -14,7 +14,7 @@ const Fams = ({user}) => (
           <Modal trigger={<Button>Start a new family group</Button>} centered={false}>
             <Modal.Header>New Family Group</Modal.Header>
             <Modal.Content>
-              <FamForm addFam={value.addFam} userId={user.id} fams={value.fam}/>
+              <FamForm addFam={value.addFam} userId={user.id} />
             </Modal.Content>
           </Modal>
         </>

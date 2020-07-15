@@ -26,10 +26,6 @@ class FamForm extends Component {
     } else {
       const FamGroupName = { last_name: this.state.fam_name, user_id: this.props.userId }
       this.props.addFam(this.state, FamGroupName, this.props.addFamGroup)
-        // this.props.addFamGroup(this.props.fams[this.props.fams.length-1].id, FamGroupName)
-      //
-      //Add Fam Group
-      //Need to pass in the Fam and the User through association
     }
     this.setState({ fam_name: '', fam_admins: '', fam_members: '' })
   }
