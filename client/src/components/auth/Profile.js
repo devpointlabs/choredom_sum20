@@ -48,7 +48,13 @@ class Profile extends React.Component {
     return (
       <Fragment>
         <Grid.Column width={4}>
-          <Image src={user.image || defaultImage} />
+          <Image src={user.image || defaultImage} 
+          circular
+          size= 'small'
+          target='_blank'
+          as='a'
+
+          />
         </Grid.Column>
         <Grid.Column width={8}>
           <Header as="h1">{user.name}</Header>

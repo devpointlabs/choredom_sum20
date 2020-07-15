@@ -21,6 +21,7 @@ import RewardForm from './components/rewards/RewardForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Profile from './components/auth/Profile';
 
+
 const App = () => (
   <>
     <Navbar/>

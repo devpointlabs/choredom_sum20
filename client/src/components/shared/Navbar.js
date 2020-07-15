@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { AuthConsumer, } from "../../providers/AuthProvider";
 import { Menu, Button, Modal, Accordion, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
+import { Image, Divider } from 'semantic-ui-react';
 import Fams from '../fams/Fams';
 
 
@@ -29,6 +30,7 @@ class WideModal extends Component {
 }
 
 class Navbar extends Component {
+
   rightNavItems = () => {
     const { auth: { user, handleLogout, }, location, } = this.props;
     if (user) {
@@ -38,6 +40,16 @@ class Navbar extends Component {
             name='logout'
             onClick={ () => handleLogout(this.props.history) }
           />
+          <Divider />
+          <Link to='/profile'>
+            <Image class='userimage'
+              src={user.image}
+              as='a'
+              size='mini'
+              
+              circular
+            />
+          </Link>
           <Menu.Item>
             <Modal trigger={<Button>My Families</Button>} centered={false}>
               <Modal.Header>My Families</Modal.Header>
@@ -49,6 +61,8 @@ class Navbar extends Component {
           <Menu.Item>
             <WideModal/>
           </Menu.Item>
+
+        
           
           {/* <Link to='/fams'>
             <Menu.Item
