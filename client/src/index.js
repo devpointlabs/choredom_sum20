@@ -8,6 +8,7 @@ import FamProvider from './providers/FamProvider';
 import RewardProvider from './providers/RewardProvider';
 import TaskProvider from './providers/TaskProvider';
 import { initMiddleware } from 'devise-axios';
+import  FamGroupProvider from './providers/FamGroupProvider';
 
 initMiddleware()
 
@@ -15,13 +16,15 @@ ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <FamProvider>
-        <RewardProvider>
-          <TaskProvider>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </TaskProvider>
-        </RewardProvider>
+        <FamGroupProvider>
+          <RewardProvider>
+            <TaskProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </TaskProvider>
+          </RewardProvider>
+        </FamGroupProvider>
       </FamProvider>
     </AuthProvider>
   </React.StrictMode>,

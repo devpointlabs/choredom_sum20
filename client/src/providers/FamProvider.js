@@ -28,12 +28,13 @@ class FamProvider extends Component {
       .catch( err => console.log(err) )
   }
 
-  addFam= (fam) => {
+  addFam= (fam, FamGroupName, addFamGroup) => {
     axios.post('/api/fams', { fam } )
       .then( res => {
         const { fams } = this.state
-        
-        this.setState({ fams: [...fams, res.data]})
+        this.setState({ fams: [...fams, res.data]}, () => {
+          addFamGroup(res.data.id, FamGroupName)
+        })
       })
       .catch( err => {
         console.log(err)

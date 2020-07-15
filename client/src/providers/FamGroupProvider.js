@@ -16,8 +16,8 @@ class FamGroupProvider extends Component {
       .catch( err => console.log(err) )
   }
 
-  addFamGroup = (user_id, famgroup) => {
-    axios.post(`/api/users/${user_id}/famgroups`, { famgroup } )
+  addFamGroup = (fam_id, famgroup) => {
+    axios.post(`/api/fams/${fam_id}/famgroups`, { famgroup } )
       .then( res => {
         const { famgroups } = this.state
         this.setState({ famgroups: [ ...famgroups, res.data ]})
