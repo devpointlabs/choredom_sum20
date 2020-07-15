@@ -19,6 +19,7 @@ import Rewards from './components/rewards/Rewards';
 import RewardShow from './components/rewards/RewardShow';
 import RewardForm from './components/rewards/RewardForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import Profile from './components/auth/Profile';
 
 const App = () => (
   <>
@@ -27,6 +28,7 @@ const App = () => (
         <Container>
           <Switch>
             <Route exact path="/" component={Home} />
+            <ProtectedRoute exact path='/profile' component={Profile} />
             <Route exact path="/login" component={Login} /> 
             <Route exact path="/register" component={Register} />
             <ProtectedRoute exact path='/initial' component={Initial} /> 
