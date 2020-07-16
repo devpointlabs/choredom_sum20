@@ -25,4 +25,19 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def addpoints
+    @user = User.find(params[:id])
+    sum = @user.points + params[:points]
+    @user.update(points: sum )
+    render json: @user
+  end
+
+  def subpoints
+    @user = User.find(params[:id])
+    sum = @user.points - params[:points]
+    @user.update(points: sum )
+    render json: @user
+  end
+
+
 end
