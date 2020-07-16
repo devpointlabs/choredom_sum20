@@ -36,7 +36,8 @@ class Api::FamsController < ApplicationController
   end
 
   def destroy
-    Fam.find(params[:id]).destroy
+    @fam = Fam.find(params[:id])
+    @fam.destroy
     render json: { messsage: 'Fam deleted' }
   end
 

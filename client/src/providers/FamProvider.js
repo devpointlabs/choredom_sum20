@@ -58,7 +58,7 @@ class FamProvider extends Component {
       })
   }
 
-  deleteFam = (id, history) => {
+  deleteFam = ( id, history) => {
     axios.delete(`/api/fams/${id}`)
       .then( res => {
         const { fams } = this.state

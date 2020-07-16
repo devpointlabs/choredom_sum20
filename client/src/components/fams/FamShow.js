@@ -33,7 +33,7 @@ class FamShow extends Component {
             Edit
           </Button>
         }
-        <Button onClick={() => deleteFam(user_id, id, history)}>
+        <Button onClick={() => deleteFam(id, history)}>
           Delete
         </Button>
       </>
