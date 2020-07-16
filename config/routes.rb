@@ -5,10 +5,16 @@ Rails.application.routes.draw do
     resources :fams do
       resources :famgroups
     end
+
     resources :users do
       resources :tasks
-      resources :rewards
+    resources :rewards
     end
     get 'userfams/:user_id', to: 'fams#userfams'
+    get '/:user_id/rewardclaimed/:reward_id', to: 'rewards#rewardclaimed'
+    get '/:user_id/taskcomplete/:task_id', to: 'tasks#taskcomplete'
+    get '/addpoints/:user_id/:points', to: 'users#addpoints'
+    get '/subpoints/:user_id/:points', to: 'users#subpoints'
   end
 end
+

@@ -27,6 +27,12 @@ class Api::TasksController < ApplicationController
     @user.tasks.find(params[:id]).destroy
     render json: { message: 'task is deleted'}
   end
+
+  def taskcomplete
+    @task = @user.tasks.find(params[:id])
+    @task.update(task_complete: !@task.task_complete)
+    render json: @task
+  end
   
   private
   
@@ -35,8 +41,10 @@ class Api::TasksController < ApplicationController
   end
   
   def set_user
-    @user = current_user
+    @user = User.find(params[:user_id])
   end
   
   
+
+
 end
