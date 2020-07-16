@@ -20,15 +20,15 @@ class FamProvider extends Component {
 
   // how is this different from componentDidMount?
 
-  getAllFams= (user_id) => {
-    axios.get(`/api/users/${user_id}/fams`)
+  getAllFams = (user_id) => {
+    axios.get(`/api/userfams/${user_id}`)
       .then( res => {
-        this.setState({ famgroups: res.data })
+        this.setState({ fams: res.data })
       })
       .catch( err => console.log(err) )
   }
 
-  addFam= (fam, FamGroupName, addFamGroup) => {
+  addFam = (fam, FamGroupName, addFamGroup) => {
     axios.post('/api/fams', { fam } )
       .then( res => {
         const { fams } = this.state
@@ -72,6 +72,7 @@ class FamProvider extends Component {
     return(
       <FamContext.Provider value={{
         ...this.state,
+        getAllFams: this.getAllFams,
         addFam: this.addFam,
         updateFam: this.updateFam,
         deleteFam: this.deleteFam,

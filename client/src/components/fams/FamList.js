@@ -9,6 +9,8 @@ const FamList = ({ fams }) => (
         <>
           <Link to={{
             pathname: `/fams/${f.id}`,
+            //
+            // pathname: `/famsgroups/${f.id}`,
             state: {...f}
           }}>
             { f.fam_name }

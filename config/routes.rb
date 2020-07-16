@@ -9,5 +9,6 @@ Rails.application.routes.draw do
       resources :tasks
       resources :rewards
     end
+    get 'userfams/:user_id', to: 'fams#userfams'
   end
 end

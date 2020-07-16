@@ -5,6 +5,18 @@ class Api::FamsController < ApplicationController
     render json: Fam.find(params[:id]).users
   end
 
+  def userfams
+    @fams = []
+    Fam.all.map { |f|
+      f.users.each { |u|
+        if u.id === params[:user_id].to_i
+          @fams << f
+        end
+      }
+    }
+    render json: @fams
+  end
+
   def create
     @fam = Fam.new(fam_params)
     if @fam.save
