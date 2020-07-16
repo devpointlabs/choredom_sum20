@@ -52,6 +52,21 @@ class RewardProvider extends Component {
       .catch( err => console.log(err) )
   }
 
+  claimReward = (user_id, id, history) => {
+    axios.get(`/api/${user_id}/rewardclaimed/${id}`)
+    .then( res => {
+      const rewards = this.state.rewards.map( t => {
+        if (t.id === id) {
+          return res.data
+        }
+        return t
+      })
+      this.setState({ rewards: rewards })
+      history.push('/rewards')
+    })
+    .catch( err => console.log(err) )
+  }
+
   render() {
     return(
       <RewardContext.Provider value={{
@@ -60,6 +75,7 @@ class RewardProvider extends Component {
         addReward: this.addReward,
         updateReward: this.updateReward,
         deleteReward: this.deleteReward,
+        claimedReward: this.claimedReward,
       }}>
         { this.props.children }
       </RewardContext.Provider>

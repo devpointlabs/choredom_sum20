@@ -49,6 +49,21 @@ class TaskProvider extends Component {
       })
       .catch( err => console.log(err) )
   }
+  
+  completeTask = (user_id, id, history) => {
+    axios.get(`/api/${user_id}/taskcomplete/${id}`)
+    .then( res => {
+      const tasks = this.state.tasks.map( t => {
+        if (t.id === id) {
+          return res.data
+        }
+        return t
+      })
+      this.setState({ tasks: tasks })
+      history.push('/tasks')
+    })
+    .catch( err => console.log(err) )
+  }
 
   render() {
     return(
@@ -58,6 +73,7 @@ class TaskProvider extends Component {
         addTask: this.addTask,
         updateTask: this.updateTask,
         deleteTask: this.deleteTask,
+        completeTask: this.completeTask,
       }}>
         { this.props.children }
       </TaskContext.Provider>

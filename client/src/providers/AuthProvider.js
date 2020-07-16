@@ -46,6 +46,22 @@ class AuthProvider extends Component {
       .then( res => this.setState({ user: res.data, }) )
   }
 
+  addPoints = (id, points) => {
+    axios.get(`/api/addpoints/${id}/${points}`)
+    .then( res => this.setState({ user: res.data, }) )
+    .catch( err => {
+      console.log(err)
+    })
+  }
+
+  subPoints = (id, points) => {
+    axios.get(`/api/subpoints/${id}/${points}`)
+    .then( res => this.setState({ user: res.data, }) )
+    .catch( err => {
+      console.log(err)
+    })
+  }
+
   render() {
     return(
       <AuthContext.Provider value={{
@@ -56,6 +72,7 @@ class AuthProvider extends Component {
         handleLogout: this.handleLogout,
         setUser: (user) => this.setState({ user }),
         updateUser: this.updateUser,
+        addPoints: this.addPoints
       }}>
         { this.props.children }
       </AuthContext.Provider>

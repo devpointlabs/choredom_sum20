@@ -27,6 +27,12 @@ class Api::RewardsController < ApplicationController
     @user.rewards.find(params[:id]).destroy
     render json: { message: 'reward deleted'}
   end
+
+  def rewardclaimed
+    @reward = @user.rewards.find(params[:id])
+    @reward.update(reward_claimed: !@reward.reward_claimed)
+    render json: @reward
+  end
   
   private
   
@@ -35,7 +41,7 @@ class Api::RewardsController < ApplicationController
   end
   
   def set_user
-    @user = current_user
+    @user = User.find(params[:user_id])
   end
   
   
