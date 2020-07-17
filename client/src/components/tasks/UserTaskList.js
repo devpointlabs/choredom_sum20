@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Grid } from 'semantic-ui-react';
 
-const UserTaskList = ({ tasks, user }) => (
+const UserTaskList = ({ tasks, user, addPoints }) => (
   <>
     <Grid columns={3} padded doubling>
       {
@@ -26,5 +26,13 @@ const UserTaskList = ({ tasks, user }) => (
 </>
 )  
 
-export default UserTaskList;
+const ConnectedUserTaskList = (props) => (
+  <AuthConsumer>
+    {
+      value => ( <UserTaskList {...props} {...value}/> )
+    }
+  </AuthConsumer>
+)
+
+export default ConnectedUserTaskList;
 

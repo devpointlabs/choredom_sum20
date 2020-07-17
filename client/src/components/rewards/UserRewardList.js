@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Grid } from 'semantic-ui-react';
 
-const UserRewardList = ({ rewards, user }) => (
+const UserRewardList = ({ rewards, user, subPoints }) => (
   <>
     <Grid columns={3} padded doubling>
       {
@@ -26,6 +26,13 @@ const UserRewardList = ({ rewards, user }) => (
 </>
 )  
 
+const ConnectedUserRewardsList = (props) => (
+  <AuthConsumer>
+    {
+      value => ( <UserRewardsList {...props} {...value}/> )
+    }
+  </AuthConsumer>
+)
 
-export default UserRewardList;
+export default ConnectedUserRewardsList;
 
