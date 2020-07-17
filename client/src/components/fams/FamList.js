@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const FamList = ({ fams }) => (
   <>
-    <h1>Families:</h1>
+    <h1>Families</h1>
     {
       fams.map( f => 
         <>

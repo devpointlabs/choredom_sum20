@@ -36,10 +36,10 @@ class Navbar extends Component {
     if (user) {
       return (
         <Menu.Menu position='right'>
-          <Menu.Item
+          {/* <Menu.Item
             name='logout'
             onClick={ () => handleLogout(this.props.history) }
-          />
+          /> */}
           <Divider />
           <Link to='/profile'>
             <Image class='userimage'
