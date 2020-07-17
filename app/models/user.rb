@@ -5,8 +5,14 @@ class User < ActiveRecord::Base
   has_many  :fams, through: :famgroups
   has_many :tasks, dependent: :destroy
   has_many  :rewards, dependent: :destroy
-  extend Devise::Models
+  validates :name, length: {minimum: 3 }
+  validates :age, length { is: 2}
+  validates ;name, :login, presence: true
+  validates :name, uniqueness: true
+  validates :task, uniqueness: true, on:create
+  validates :reward, uniqueness: true, on:create
 
+  extend Devise::Models
 
 
   # Include default devise modules. Others available are:
