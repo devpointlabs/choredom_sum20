@@ -6,6 +6,8 @@ import { Image, Divider } from 'semantic-ui-react';
 import Fams from '../fams/Fams';
 import Profile from '../auth/Profile';
 
+const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
+
 
 class Navbar extends Component {
 
@@ -35,7 +37,7 @@ class Navbar extends Component {
           <Divider />
           <Link to='/profile'>
             <Image class='userimage'
-              src={user.image}
+              src={user.image || defaultImage}
               as='a'
               size='mini'
               circular
@@ -76,7 +78,7 @@ class Navbar extends Component {
     return (
       <div>
         <Menu pointing secondary>
-          <Link to='/'>
+          <Link to='/admindash'>
             <Menu.Item
               name='home'
               id='home'
