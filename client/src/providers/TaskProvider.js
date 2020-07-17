@@ -60,7 +60,7 @@ class TaskProvider extends Component {
         return t
       })
       this.setState({ tasks: tasks })
-      history.push('/tasks')
+      history.push('/userdash')
     })
     .catch( err => console.log(err) )
   }

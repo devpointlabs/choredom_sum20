@@ -10,13 +10,13 @@ class UserTasks extends React.Component {
     this.props.getAllTasks(this.props.user.id)
   }
   render() {
-    const {tasks, user} = this.props
+    const {tasks, user, completeTask, addPoints, history} = this.props
 
     return (
       <>
           {
             tasks ? 
-              <UserTaskList user={user} tasks={tasks} />
+              <UserTaskList user={user} tasks={tasks} completeTask={completeTask} addPoints={addPoints} history={history} />
               : <p>No Tasks</p>
           }
       </>

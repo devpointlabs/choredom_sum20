@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Grid } from 'semantic-ui-react';
+import { Card, Grid, Button } from 'semantic-ui-react';
+import { AuthConsumer } from '../../providers/AuthProvider';
 
-const UserRewardList = ({ rewards, user }) => (
+const UserRewardList = ({ rewards, user, subPoints, claimReward, history }) => (
   <>
     <Grid columns={3} padded doubling>
       {
@@ -16,6 +17,12 @@ const UserRewardList = ({ rewards, user }) => (
                 </Card.Content>
                 <Card.Content>
                 { r.reward_cost }
+                {
+                  r.reward_claimed ? 
+                    <p>bought</p>
+                  :
+                    <Button onClick={ () => claimReward(user.id, r.id, history) }>Buy</Button>
+                }
                 </Card.Content>
               </Card> 
           </Grid.Column>
@@ -25,7 +32,6 @@ const UserRewardList = ({ rewards, user }) => (
 </Grid>
 </>
 )  
-
 
 export default UserRewardList;
 

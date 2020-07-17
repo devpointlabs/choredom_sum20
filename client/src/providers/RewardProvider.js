@@ -62,7 +62,7 @@ class RewardProvider extends Component {
         return t
       })
       this.setState({ rewards: rewards })
-      history.push('/rewards')
+      history.push('/userdash')
     })
     .catch( err => console.log(err) )
   }
@@ -75,7 +75,7 @@ class RewardProvider extends Component {
         addReward: this.addReward,
         updateReward: this.updateReward,
         deleteReward: this.deleteReward,
-        claimedReward: this.claimedReward,
+        claimReward: this.claimReward,
       }}>
         { this.props.children }
       </RewardContext.Provider>
