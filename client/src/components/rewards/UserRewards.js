@@ -14,14 +14,14 @@ class UserRewards extends React.Component {
 
     return (
       <>
-      <Card>
-       <h1>Rewards</h1>
+  
+     
           {
             rewards ? 
               <UserRewardList user={user} rewards={rewards} />
               : <p>No Rewards</p>
           }
-      </Card>
+ 
       </>
     )
   }

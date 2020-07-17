@@ -4,31 +4,8 @@ import { Menu, Button, Modal, Accordion, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
 import { Image, Divider } from 'semantic-ui-react';
 import Fams from '../fams/Fams';
-import Profile from '../auth/Profile'
+import Profile from '../auth/Profile';
 
-
-class WideModal extends Component {
-  state = { open: false }
-
-  show = (size) => () => this.setState({ size, open: true })
-  close = () => this.setState({ open: false })
-
-  render() {
-    const { open, size } = this.state
-
-    return (
-      <>
-        <Button onClick={this.show('fullscreen')}>My Families</Button>
-          <Modal size={size} open={open} onClose={this.close} centered={false}>
-            <Modal.Header>My Families</Modal.Header>
-            <Modal.Content>
-              <Fams/>
-            </Modal.Content>
-          </Modal>
-        </>
-    )
-  }
-}
 
 class Navbar extends Component {
 
@@ -40,14 +17,27 @@ class Navbar extends Component {
           <Menu.Item
             name='logout'
             onClick={ () => handleLogout(this.props.history) }
-          />
+            />
+          <Link to='/earn'>
+            <Menu.Item
+              id='earn'
+              name='Earn'
+              active={location.pathname === '/earn'}
+            />
+          </Link>
+          <Link to='/spend'>
+            <Menu.Item
+              id='spend'
+              name='Spend'
+              active={location.pathname === '/spend'}
+            />
+          </Link>
           <Divider />
           <Link to='/profile'>
             <Image class='userimage'
               src={user.image}
               as='a'
               size='mini'
-              
               circular
             />
           </Link>
@@ -59,37 +49,6 @@ class Navbar extends Component {
                 </Modal.Content>
             </Modal>
           </Menu.Item>
-          <Menu.Item>
-            <WideModal/>
-          </Menu.Item>
-
-        
-          
-          {/* <Link to='/fams'>
-            <Menu.Item
-              id='myfams'
-              name='My Families'
-              active={location.pathname === '/myfams'}
-            />
-          </Link> */}
-
-
-        {/* <Menu.Item>
-        <Button>
-            <Accordion>
-              <Accordion.Title
-              active={activeIndex === 0}
-              index={0}
-              onClick={this.handleClick}>
-                My Families
-                </Accordion.Title>
-              <Accordion.Content active={activeIndex === 0}>
-                <p> These are my families</p>
-              </Accordion.Content>
-              </Accordion>
-          </Button>
-        </Menu.Item> */}
-
         </Menu.Menu>
       )
     } else {

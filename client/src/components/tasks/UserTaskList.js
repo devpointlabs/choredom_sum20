@@ -1,21 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card } from 'semantic-ui-react';
+import { Card, Grid } from 'semantic-ui-react';
 
 const UserTaskList = ({ tasks, user }) => (
-  tasks.map( t => 
-    <>
-      <Card>
-      <Link to={{
-        pathname: `/usertasks/${t.id}`,
-        state: {...t, user}
-      }}>
-        { t.task_name }
-      </Link>
-      </Card>
-    </>
+  <>
+    <Grid columns={3} padded doubling>
+      {
+        tasks.map( t =>
+          <>
+          <Grid.Column>
+              <Card>
+                <Card.Content header={t.task_name}/>
+                <Card.Content>
+                { t.task_description }
+                </Card.Content>
+                <Card.Content>
+                { t.task_value }
+                </Card.Content>
+              </Card> 
+          </Grid.Column>
+      </>
   )
-)
+}
+</Grid>
+</>
+)  
 
 export default UserTaskList;
 
