@@ -25,3 +25,28 @@ const AdminDash = () => (
   </>
   )
 export default AdminDash;
+
+{/* <Grid columns={2} padded>
+      <Grid.Column>
+        <Container>
+          <Grid divided= "vertically">
+            <Grid.Row columns={1}>
+              <Grid.Column>
+               < UserRewards />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
+      </Grid.Column>
+      <Grid.Column>
+        <Container>
+          <Grid divided= "vertically">
+            <Grid.Row columns={1}>
+              <Grid.Column>
+                < UserTasks />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
+      </Grid.Column>
+    </Grid> */}

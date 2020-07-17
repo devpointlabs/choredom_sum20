@@ -1,21 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card } from 'semantic-ui-react';
+import { Card, Grid } from 'semantic-ui-react';
 
-const UserRewardsList = ({ rewards, user }) => (
-  rewards.map( r => 
-    <>
-      <Card>
-      <Link to={{
-        pathname: `/userrewards/${r.id}`,
-        state: {...r, user}
-      }}>
-        { r.reward_name }
-      </Link>
-      </Card>
-    </>
+const UserRewardList = ({ rewards, user }) => (
+  <>
+    <Grid columns={3} padded doubling>
+      {
+        rewards.map( r =>
+          <>
+          <Grid.Column>
+              <Card>
+                <Card.Content header={r.reward_name}/>
+                <Card.Content>
+                { r.reward_description }
+                </Card.Content>
+                <Card.Content>
+                { r.reward_cost }
+                </Card.Content>
+              </Card> 
+          </Grid.Column>
+      </>
   )
-)
+}
+</Grid>
+</>
+)  
 
-export default UserRewardsList;
+
+export default UserRewardList;
 

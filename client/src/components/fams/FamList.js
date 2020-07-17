@@ -4,27 +4,26 @@ import { Grid, Card, Header } from 'semantic-ui-react';
 
 const FamList = ({ fams }) => (
   <>
-    {/* <h1>Families:</h1> */}
     <Grid columns={5} padded doubling>
     {
       fams.map( f => 
         <>
         <Grid.Column>
-          <Card>
-            <Card.Content>
-              <br/>
-                <Header>
-                  <Link to={{
-                    pathname: `/fams/${f.id}`,
-                    state: {...f}
-                  }}>
+          <Link to={{
+            pathname: `/fams/${f.id}`,
+            state: {...f}
+            }}>
+            <Card>
+              <Card.Content>
+                <br/>
+                  <Header>
                     { f.fam_name }
-                  </Link>
-                </Header>
-              <br/>
-              <br/>
-              </Card.Content>
-          </Card>
+                  </Header>
+                <br/>
+                <br/>
+                </Card.Content>
+              </Card>
+            </Link>
         </Grid.Column>
         </>
       )
@@ -34,24 +33,3 @@ const FamList = ({ fams }) => (
 )
 
 export default FamList;
-
-{/* <Grid columns={5} padded doubling>
-{
-  fams.map( f => 
-    <>
-    <Grid.Column>
-      <Card>
-        <Link to={{
-          pathname: `/fams/${f.id}`,
-          //
-          // pathname: `/famsgroups/${f.id}`,
-          state: {...f}
-        }}>
-          { f.fam_name }
-        </Link>
-      </Card>
-    </Grid.Column>
-    </>
-  )
-}
-</Grid> */}

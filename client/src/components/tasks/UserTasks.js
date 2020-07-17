@@ -14,18 +14,16 @@ class UserTasks extends React.Component {
 
     return (
       <>
-      <Card>
-       <h1>Tasks</h1>
           {
             tasks ? 
               <UserTaskList user={user} tasks={tasks} />
               : <p>No Tasks</p>
           }
-        </Card>
       </>
     )
   }
 }
+
 const ConnectedTasks = (props) => (
   <TaskConsumer>
     {

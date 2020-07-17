@@ -23,6 +23,8 @@ import Profile from './components/auth/Profile';
 import UserDash from './components/shared/UserDash';
 import UserRewardShow from './components/rewards/UserRewardShow';
 import UserTaskShow from './components/tasks/UserTaskShow';
+import Earn from './components/tasks/Earn';
+import Spend from './components/rewards/Spend';
 
 
 const App = () => (
@@ -49,6 +51,8 @@ const App = () => (
             <Route exact path='/fams/:id' component={FamShow} />
             <Route exact path='/userrewards/:id' component={UserRewardShow} />
             <Route exact path='/usertasks/:id' component={UserTaskShow} />
+            <Route exact path='/earn' component={Earn} />
+            <Route exact path='/spend' component={Spend} />
             <Route component={NoMatch} />
           </Switch>
         </Container>
