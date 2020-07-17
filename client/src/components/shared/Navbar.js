@@ -4,6 +4,7 @@ import { Menu, Button, Modal, Accordion, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
 import { Image, Divider } from 'semantic-ui-react';
 import Fams from '../fams/Fams';
+import Profile from '../auth/Profile'
 
 
 class WideModal extends Component {

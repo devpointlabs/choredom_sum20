@@ -1,31 +1,27 @@
 //This becomes the Manage Reward page
 import React from 'react';
 import { RewardConsumer } from '../../providers/RewardProvider';
-import RewardForm from './RewardForm';
-import RewardList from './RewardList';
+import UserRewardList from './UserRewardList';
 import { AuthConsumer } from '../../providers/AuthProvider';
-import { Button, Modal } from 'semantic-ui-react';
-class Rewards extends React.Component {
+import { Button, Modal, Card } from 'semantic-ui-react';
+
+class UserRewards extends React.Component {
   componentDidMount() {
     this.props.getAllRewards(this.props.user.id)
   }
   render() {
-    const {addReward, rewards, user} = this.props
+    const {rewards, user} = this.props
+
     return (
       <>
+      <Card>
        <h1>Rewards</h1>
-        <Modal trigger={<Button>Create Reward</Button>} centered={false}>
-              <Modal.Header>Create New Reward</Modal.Header>
-              <Modal.Content>
-                <RewardForm addReward={addReward} user_id={user.id} />  
-              </Modal.Content>
-            </Modal>
-          <br/>
           {
             rewards ? 
-              <RewardList user={user} rewards={rewards} />
+              <UserRewardList user={user} rewards={rewards} />
               : <p>No Rewards</p>
           }
+      </Card>
       </>
     )
   }
@@ -34,7 +30,7 @@ const ConnectedRewards = (props) => (
   <RewardConsumer>
     {
       values => (
-        <Rewards {...props} {...values} />
+        <UserRewards {...props} {...values} />
       )
     }
   </RewardConsumer>

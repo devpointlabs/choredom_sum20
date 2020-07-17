@@ -20,6 +20,9 @@ import RewardShow from './components/rewards/RewardShow';
 import RewardForm from './components/rewards/RewardForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Profile from './components/auth/Profile';
+import UserDash from './components/shared/UserDash';
+import UserRewardShow from './components/rewards/UserRewardShow';
+import UserTaskShow from './components/tasks/UserTaskShow';
 
 
 const App = () => (
@@ -34,6 +37,7 @@ const App = () => (
             <Route exact path="/register" component={Register} />
             <ProtectedRoute exact path='/initial' component={Initial} /> 
             <ProtectedRoute exact path='/admindash' component={AdminDash} /> 
+            <ProtectedRoute exact path='/userdash' component={UserDash} />
             <ProtectedRoute exact path='/familyform' component={FamForm} /> 
             <ProtectedRoute exact path='/rewardform' component={RewardForm} />
             <ProtectedRoute exact path='/taskform' component={TaskForm} />
@@ -43,6 +47,8 @@ const App = () => (
             <ProtectedRoute exact path="/tasks" component={Tasks} />
             <Route exact path="/fams" component={Fams} /> 
             <Route exact path='/fams/:id' component={FamShow} />
+            <Route exact path='/userrewards/:id' component={UserRewardShow} />
+            <Route exact path='/usertasks/:id' component={UserTaskShow} />
             <Route component={NoMatch} />
           </Switch>
         </Container>
