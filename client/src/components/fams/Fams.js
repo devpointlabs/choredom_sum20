@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FamConsumer } from '../../providers/FamProvider';
 import FamForm from './FamForm';
 import FamList from './FamList';
-import { Button, Modal } from 'semantic-ui-react';
+import { Button, Modal, Grid } from 'semantic-ui-react';
 import { AuthConsumer } from '../../providers/AuthProvider';
 
 class Fams extends Component {
@@ -16,12 +16,12 @@ class Fams extends Component {
     return (
       <>
         <FamList fams={fams} />
-        <Modal trigger={<Button>Start a new family group</Button>} centered={false}>
-          <Modal.Header>New Family Group</Modal.Header>
-          <Modal.Content>
-            <FamForm addFam={addFam} userId={user.id} />
-          </Modal.Content>
-        </Modal>
+          <Modal trigger={<Button>Start a new family group</Button>} centered={false}>
+            <Modal.Header>New Family Group</Modal.Header>
+            <Modal.Content>
+              <FamForm addFam={addFam} userId={user.id} />
+            </Modal.Content>
+          </Modal>
       </>
     )
   }
