@@ -4,18 +4,21 @@ import { Button } from 'semantic-ui-react';
 
 
 class UserTaskShow extends Component {
-  state = { editing: false }
-
-  toggleUpdate = () => this.setState({ editing: !this.state.editing })
 
   render() {
-    const { user_id, id, task_name, task_description, task_value, } = this.props.location.state
-    const { editing } = this.state
+    const { user_id, id, task_name, task_description, task_value, task_complete } = this.props.location.state;
+    const { completeTask, history } = this.props;
     return(
       <>
         <h1>{task_name}</h1>
         <h3>{task_description}</h3>
         <h4>{task_value}</h4>
+        {
+          task_complete ? 
+            <p>claimed</p>
+          :
+            <Button onClick={ () => completeTask(user_id, id, history) }>Complete Task</Button>
+        }
       </>
     )
   }
@@ -26,6 +29,7 @@ const ConnectedTaskShow = (props) => (
     { value => (
       <UserTaskShow 
         {...props} 
+        {...value}
       />
     )}
   </TaskConsumer>

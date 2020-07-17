@@ -29,7 +29,7 @@ class Api::RewardsController < ApplicationController
   end
 
   def rewardclaimed
-    @reward = @user.rewards.find(params[:id])
+    @reward = @user.rewards.find(params[:reward_id])
     @reward.update(reward_claimed: !@reward.reward_claimed)
     render json: @reward
   end
