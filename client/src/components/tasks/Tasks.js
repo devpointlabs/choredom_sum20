@@ -15,7 +15,7 @@ class Tasks extends React.Component {
     const {addTask, tasks, user} = this.props
     return (
     <>
-      <h1>Tasks Page</h1>
+      <h1>Tasks</h1>
         
       <Modal trigger={<Button>Create Task</Button>} centered={false}>
         <Modal.Header>Create New Task</Modal.Header>

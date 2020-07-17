@@ -1,7 +1,8 @@
 import React, { Fragment, } from 'react';
 import { AuthConsumer, } from "../../providers/AuthProvider";
-import { Form, Grid, Image, Container, Divider, Header, Button, } from 'semantic-ui-react';
+import { Form, Grid, Image, Container, Divider, Header, Button, Menu } from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
+import { Link } from 'react-router-dom'
 
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
@@ -120,6 +121,7 @@ class Profile extends React.Component {
   
   render() {
     const { editing, } = this.state;
+    const { handleLogout, history } = this.props.auth;
     return (
       <Container>
         <Divider hidden />
@@ -128,6 +130,9 @@ class Profile extends React.Component {
             { editing ? this.editView() : this.profileView()}
             <Grid.Column>
               <Button onClick={this.toggleEdit}>{editing ? 'Cancel' : 'Edit'}</Button>
+            </Grid.Column>
+            <Grid.Column>
+            <Button onClick={ () => handleLogout(history) }>logout</Button>
             </Grid.Column>
           </Grid.Row>
         </Grid>
