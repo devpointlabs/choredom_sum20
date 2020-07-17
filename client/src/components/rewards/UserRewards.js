@@ -10,7 +10,7 @@ class UserRewards extends React.Component {
     this.props.getAllRewards(this.props.user.id)
   }
   render() {
-    const {rewards, user} = this.props
+    const {rewards, user, claimReward, subPoints, history} = this.props
 
     return (
       <>
@@ -18,7 +18,7 @@ class UserRewards extends React.Component {
      
           {
             rewards ? 
-              <UserRewardList user={user} rewards={rewards} />
+              <UserRewardList user={user} rewards={rewards} subPoints={subPoints} claimReward={claimReward} history={history} />
               : <p>No Rewards</p>
           }
  

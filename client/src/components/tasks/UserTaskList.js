@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Grid } from 'semantic-ui-react';
+import { Card, Grid, Button } from 'semantic-ui-react';
 
-const UserTaskList = ({ tasks, user, addPoints }) => (
+const UserTaskList = ({ tasks, user, addPoints, completeTask, history }) => (
   <>
     <Grid columns={3} padded doubling>
       {
@@ -16,6 +16,12 @@ const UserTaskList = ({ tasks, user, addPoints }) => (
                 </Card.Content>
                 <Card.Content>
                 { t.task_value }
+                {
+                  t.task_complete ? 
+                    <p>claimed</p>
+                  :
+                    <Button onClick={ () => completeTask(user.id, t.id, history) }>Complete Task</Button>
+                }
                 </Card.Content>
               </Card> 
           </Grid.Column>
@@ -26,13 +32,6 @@ const UserTaskList = ({ tasks, user, addPoints }) => (
 </>
 )  
 
-const ConnectedUserTaskList = (props) => (
-  <AuthConsumer>
-    {
-      value => ( <UserTaskList {...props} {...value}/> )
-    }
-  </AuthConsumer>
-)
 
-export default ConnectedUserTaskList;
+export default UserTaskList;
 
