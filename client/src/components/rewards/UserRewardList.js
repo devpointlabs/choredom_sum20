@@ -21,7 +21,7 @@ const UserRewardList = ({ rewards, user, subPoints, claimReward, history }) => (
                   r.reward_claimed ? 
                     <p>bought</p>
                   :
-                    <Button onClick={ () => claimReward(user.id, r.id, history) }>Buy</Button>
+                    <Button onClick={ () => claimReward(user.id, r.id, history, subPoints, r.reward_cost) }>Buy</Button>
                 }
                 </Card.Content>
               </Card> 
