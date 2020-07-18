@@ -52,7 +52,7 @@ class RewardProvider extends Component {
       .catch( err => console.log(err) )
   }
 
-  claimReward = (user_id, id, history) => {
+  claimReward = (user_id, id, history, subPoints, points) => {
     axios.get(`/api/${user_id}/rewardclaimed/${id}`)
     .then( res => {
       const rewards = this.state.rewards.map( t => {
@@ -61,7 +61,9 @@ class RewardProvider extends Component {
         }
         return t
       })
-      this.setState({ rewards: rewards })
+      this.setState({ rewards: rewards }, () => {
+        subPoints(user_id, points)
+      })
       history.push('/userdash')
     })
     .catch( err => console.log(err) )

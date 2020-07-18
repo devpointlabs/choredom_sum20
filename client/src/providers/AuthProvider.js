@@ -72,7 +72,8 @@ class AuthProvider extends Component {
         handleLogout: this.handleLogout,
         setUser: (user) => this.setState({ user }),
         updateUser: this.updateUser,
-        addPoints: this.addPoints
+        addPoints: this.addPoints,
+        subPoints: this.subPoints,
       }}>
         { this.props.children }
       </AuthContext.Provider>
