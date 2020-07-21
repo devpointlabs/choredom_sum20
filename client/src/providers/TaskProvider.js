@@ -50,7 +50,7 @@ class TaskProvider extends Component {
       .catch( err => console.log(err) )
   }
   
-  completeTask = (user_id, id, history) => {
+  completeTask = (user_id, id, history, addPoints, points) => {
     axios.get(`/api/${user_id}/taskcomplete/${id}`)
     .then( res => {
       const tasks = this.state.tasks.map( t => {
@@ -59,7 +59,9 @@ class TaskProvider extends Component {
         }
         return t
       })
-      this.setState({ tasks: tasks })
+      this.setState({ tasks: tasks }, () => {
+        addPoints(user_id, points)
+      })
       history.push('/userdash')
     })
     .catch( err => console.log(err) )

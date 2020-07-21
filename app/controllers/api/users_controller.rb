@@ -39,5 +39,11 @@ class Api::UsersController < ApplicationController
     render json: @user
   end
 
+  def userpoints
+    @user = User.find(params[:user_id])
+    sum = @user.points
+    render json: @user
+  end
+
 
 end

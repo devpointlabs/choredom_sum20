@@ -5,6 +5,7 @@ import RewardForm from './RewardForm';
 import RewardList from './RewardList';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { Button, Modal } from 'semantic-ui-react';
+
 class Rewards extends React.Component {
   componentDidMount() {
     this.props.getAllRewards(this.props.user.id)

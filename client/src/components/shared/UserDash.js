@@ -1,15 +1,28 @@
 import React from 'react';
-import { Container, Button, Modal, Grid } from 'semantic-ui-react';
+import { Container, Button, Modal, Grid, Header } from 'semantic-ui-react';
 import UserRewards from '../rewards/UserRewards';
 import UserTasks from '../tasks/UserTasks'
+import { AuthConsumer } from '../../providers/AuthProvider';
 
+  class UserDash extends React.Component {
+    render() {
+      const { points } = this.props.user
+      return (
+        <>
+         <h1>My Points</h1>
+         <p> { Number(points) } </p>
+        </>
+      )
+    }
+  }
 
-
-const UserDash = () => (
-  <>
-    <h1>User Dashboard</h1>
-    <p> My Family Section Across Top Row </p>
-    <p> My points in upper left corner</p>
-  </>
+  const ConnectedUserDash = (props) => (
+    <AuthConsumer>
+      {
+         values => (
+        <UserDash {...props} {...values} />
+      )}
+    </AuthConsumer>
   )
-export default UserDash;
+
+export default ConnectedUserDash;

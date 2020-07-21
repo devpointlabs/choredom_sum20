@@ -62,6 +62,15 @@ class AuthProvider extends Component {
     })
   }
 
+  userPoints = (id, points) => {
+    axios.get(`/api/userpoints/${id}/${points}`)
+    .then( res => this.setState({ user: res.data, }
+    ) )
+    .catch( err => {
+      console.log(err)
+    })
+  }
+
   render() {
     return(
       <AuthContext.Provider value={{
@@ -74,6 +83,7 @@ class AuthProvider extends Component {
         updateUser: this.updateUser,
         addPoints: this.addPoints,
         subPoints: this.subPoints,
+        userPoints: this.userPoints,
       }}>
         { this.props.children }
       </AuthContext.Provider>
