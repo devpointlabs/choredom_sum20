@@ -48,6 +48,19 @@ class FamGroupProvider extends Component {
       .catch( err => console.log(err) )
   }
 
+  addMember = ( fam_id, email ) => {
+    axios.post(`/api/${fam_id}/join`, email)
+    .then( res => {
+      const { famgroups } = this.state
+      this.setState({ famgroups: [ ...famgroups, res.data ]})
+    })
+    .catch( err => console.log(err) )
+}
+
+  }
+
+
+
   render() {
     return(
       <FamGroupContext.Provider value={{

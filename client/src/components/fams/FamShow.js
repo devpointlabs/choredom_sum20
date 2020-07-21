@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { FamConsumer } from '../../providers/FamProvider';
-import { Button, Card, Grid } from 'semantic-ui-react';
+import { Button, Card, Grid, Modal } from 'semantic-ui-react';
 import FamForm from './FamForm';
+import AddUserForm from './AddUserForm';
 
 class FamShow extends Component {
   state = { editing: false }
@@ -43,6 +44,14 @@ class FamShow extends Component {
         <Button onClick={() => deleteFam(id, history)}>
           Delete
         </Button>
+
+        <Modal trigger={<Button>Add Member</Button>} centered={false}>
+            <Modal.Header>New Family Group</Modal.Header>
+            <Modal.Content>
+              <AddUserForm fam_id={id} addMember={addMember} history={history}/>
+            </Modal.Content>
+          </Modal>
+
           </Card.Content>
         </Card>
       </Grid.Column>
@@ -80,9 +89,19 @@ const ConnectedFamShow = (props) => (
         {...props} 
         updateFam={value.updateFam} 
         deleteFam={value.deleteFam}
+
       />
     )}
   </FamConsumer>
 )
 
-export default ConnectedFamShow;
+const ConnectedFams = ( props ) => (
+  < FamGroupConsumer>
+    { values => (
+      <ConnectedFamShow {...props} { ...values }/>
+    )
+     }
+  </FamGroupConsumer>
+)
+
+export default ConnectedFams;

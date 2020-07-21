@@ -15,6 +15,17 @@ class Api::FamgroupsController < ApplicationController
     end
   end
 
+  def join
+    email = params[:email]
+    user = User.find_by(email: email)
+    @famgroup = @fam.famgroups.new(last_name: @fam.fam_name, user_id: user.id)
+    if @famgroup.save
+      render json: @famgroup
+    else
+      render json: { errors: @famgroup.errors }, status: :unprocessable_entity
+    end
+  end
+
   def update
     if @famgroup.update(famgroup_params)
       render json: @famgroup
