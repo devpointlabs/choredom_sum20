@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get '/:user_id/taskcomplete/:task_id', to: 'tasks#taskcomplete'
     get '/addpoints/:user_id/:points', to: 'users#addpoints'
     get '/subpoints/:user_id/:points', to: 'users#subpoints'
+    get '/userpoints/:user_id/:points', to: 'users#userpoints'
   end
 end
 

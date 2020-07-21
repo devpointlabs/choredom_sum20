@@ -20,7 +20,7 @@ const UserTaskList = ({ tasks, user, addPoints, completeTask, history }) => (
                   t.task_complete ? 
                     <p>claimed</p>
                   :
-                    <Button onClick={ () => completeTask(user.id, t.id, history) }>Complete Task</Button>
+                    <Button onClick={ () => completeTask(user.id, t.id, history, addPoints, t.task_value) }>Complete Task</Button>
                 }
                 </Card.Content>
               </Card> 
