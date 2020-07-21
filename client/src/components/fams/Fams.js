@@ -4,6 +4,7 @@ import FamForm from './FamForm';
 import FamList from './FamList';
 import { Button, Modal, Grid } from 'semantic-ui-react';
 import { AuthConsumer } from '../../providers/AuthProvider';
+import { withRouter } from  'react-router-dom';
 
 class Fams extends Component {
   componentDidMount() {
@@ -12,14 +13,14 @@ class Fams extends Component {
   }
   
   render () {
-    const { fams, addFam, user } = this.props
+    const { fams, addFam, user, history } = this.props
     return (
       <>
         <FamList fams={fams} />
           <Modal trigger={<Button>Start a new family group</Button>} centered={false}>
             <Modal.Header>New Family Group</Modal.Header>
             <Modal.Content>
-              <FamForm addFam={addFam} userId={user.id} />
+              <FamForm addFam={addFam} userId={user.id} history={history}/>
             </Modal.Content>
           </Modal>
       </>
@@ -35,7 +36,7 @@ const SecondaryFams = (props) => (
       )
     }
   </FamConsumer>
-) 
+)
 
 const ConnectedFams = ( props ) => (
   < AuthConsumer>
@@ -46,4 +47,4 @@ const ConnectedFams = ( props ) => (
   </AuthConsumer>
 )
 
-export default ConnectedFams;
+export default withRouter(ConnectedFams);

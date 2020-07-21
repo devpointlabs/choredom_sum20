@@ -25,7 +25,7 @@ class FamForm extends Component {
       this.props.toggleUpdate()
     } else {
       const FamGroupName = { last_name: this.state.fam_name, user_id: this.props.userId }
-      this.props.addFam(this.state, FamGroupName, this.props.addFamGroup)
+      this.props.addFam(this.state, FamGroupName, this.props.addFamGroup, this.props.history)
     }
     this.setState({ fam_name: '', fam_admins: '', fam_members: '' })
   }
