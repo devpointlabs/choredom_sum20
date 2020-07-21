@@ -5,9 +5,10 @@ class User < ActiveRecord::Base
   has_many  :fams, through: :famgroups
   has_many :tasks, dependent: :destroy
   has_many  :rewards, dependent: :destroy
-  validates :name, length: {minimum: 3 }
-  validates :age, length { is: 2}
-  validates ;name, :login, presence: true
+  validates :name, length: {minimum: 1 }
+  validates :age, length { is: 1}
+  validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
+  validates :name, :login, presence: true
   validates :name, uniqueness: true
   validates :task, uniqueness: true, on:create
   validates :reward, uniqueness: true, on:create
