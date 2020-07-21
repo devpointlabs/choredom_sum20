@@ -8,10 +8,7 @@ class User < ActiveRecord::Base
   validates :name, length: {minimum: 1 }
   validates :age, length { is: 1}
   validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
-  validates :name, :login, presence: true
-  validates :name, uniqueness: true
-  validates :task, uniqueness: true, on:create
-  validates :reward, uniqueness: true, on:create
+  validates :name, presence: true
 
   extend Devise::Models
 
