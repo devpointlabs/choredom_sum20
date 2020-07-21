@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 
 class RewardForm extends Component {
-  state = { reward_name: '', reward_description: '', reward_cost: '', reward_claimed: false, reward_used: false }
+  state = { famId: null, reward_name: '', reward_description: '', reward_cost: '', reward_claimed: false, reward_used: false }
 
   componentDidMount() {
     if (this.props.id) {
-      const { reward_name, reward_description, reward_cost, } = this.props
-      this.setState({ reward_name, reward_description, reward_cost, })
+      const { reward_name, reward_description, reward_cost, famId } = this.props
+      this.setState({ reward_name, reward_description, reward_cost, famId })
     }
   }
 
@@ -25,11 +25,11 @@ class RewardForm extends Component {
     } else {
       this.props.addReward(this.props.user_id, this.state)
     }
-    this.setState({ reward_name: '', reward_description: '', reward_cost: '', reward_claimed: '', reward_used: '' })
+    this.setState({ reward_name: '', reward_description: '', reward_cost: '', reward_claimed: '', reward_used: '', famId: null })
   }
 
   render() {
-    const { reward_name, reward_description, reward_cost, } = this.state
+    const { reward_name, reward_description, reward_cost, famId, } = this.state
     return(
       <Form onSubmit={this.handleSubmit}>
         <Form.Input
@@ -52,6 +52,14 @@ class RewardForm extends Component {
           onChange={this.handleChange}
           label='Reward Cost'
           required
+        />
+        <Form.Input
+          name='famId'
+          value={famId}
+          onChange={this.handleChange}
+          label='Fam Id'
+          required
+          type='numbers'
         />
         <Form.Button>Submit</Form.Button>
       </Form>
