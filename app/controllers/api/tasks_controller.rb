@@ -2,7 +2,15 @@ class Api::TasksController < ApplicationController
   before_action :set_user
 
   def index
-    render json: @user.tasks
+    @tasks = []
+    @user.fams.each{ |f|
+      Task.all.each{ |t| 
+        if f.id == t.famId
+          @tasks << t
+        end
+      }
+    }
+    render json: @tasks
   end
   
   def create
@@ -37,7 +45,7 @@ class Api::TasksController < ApplicationController
   private
   
   def task_params
-    params.require(:task).permit(:task_name, :task_description, :task_value, :task_complete)
+    params.require(:task).permit(:task_name, :task_description, :task_value, :task_complete, :famId)
   end
   
   def set_user

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 
 class TaskForm extends Component {
-  state = { task_name: '', task_description: '', task_value: '' }
+  state = { famId: null, task_name: '', task_description: '', task_value: '' }
 
   componentDidMount() {
     if (this.props.id) {
-      const { task_name, task_description, task_value } = this.props
-      this.setState({ task_name, task_description, task_value })
+      const { task_name, task_description, task_value, famId } = this.props
+      this.setState({ task_name, task_description, task_value, famId })
     }
   }
 
@@ -25,11 +25,11 @@ class TaskForm extends Component {
     } else {
       this.props.addTask(this.props.user_id, this.state)
     }
-    this.setState({ task_name: '', task_description: '', task_value: '' })
+    this.setState({ task_name: '', task_description: '', task_value: '', famId: null })
   }
 
   render() {
-    const { task_name, task_description, task_value } = this.state
+    const { task_name, task_description, task_value, famId } = this.state
     return(
       <Form onSubmit={this.handleSubmit}>
         <Form.Input
@@ -52,6 +52,14 @@ class TaskForm extends Component {
           onChange={this.handleChange}
           label='Task Value'
           required
+        />
+        <Form.Input
+          name='famId'
+          value={famId}
+          onChange={this.handleChange}
+          label='Fam Id'
+          required
+          type='numbers'
         />
         <Form.Button>Submit</Form.Button>
       </Form>
