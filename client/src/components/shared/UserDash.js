@@ -3,6 +3,10 @@ import { Container, Button, Modal, Grid, Header } from 'semantic-ui-react';
 import UserRewards from '../rewards/UserRewards';
 import UserTasks from '../tasks/UserTasks'
 import { AuthConsumer } from '../../providers/AuthProvider';
+import Fams from '../fams/Fams';
+import { RewardConsumer } from '../../providers/RewardProvider';
+
+
 
   class UserDash extends React.Component {
     render() {
@@ -11,6 +15,8 @@ import { AuthConsumer } from '../../providers/AuthProvider';
         <>
          <h1>My Points</h1>
          <p> { Number(points) } </p>
+
+
         </>
       )
     }

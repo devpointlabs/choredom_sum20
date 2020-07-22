@@ -20,6 +20,24 @@ class Navbar extends Component {
             name='logout'
             onClick={ () => handleLogout(this.props.history) }
             />
+          {
+            user.admin ?
+              <Link to='/admindash'>
+                <Menu.Item
+                  id='dashboard'
+                  name='dashboard'
+                  active={location.pathname === '/admindash'}
+                />
+              </Link>
+              :
+            <Link to='/userdash' >
+              <Menu.Item
+                id='dashboard'
+                name='dashboard'
+                active={location.pathname === '/userdash'}
+              />
+            </Link>
+          }
           <Link to='/earn'>
             <Menu.Item
               id='earn'
