@@ -3,7 +3,7 @@ import { AuthConsumer, } from "../../providers/AuthProvider";
 import { Button, Form, Segment, Header, } from 'semantic-ui-react';
 import { Link, } from 'react-router-dom';
 
-class Register extends React.Component {
+class AdminRegister extends React.Component {
   state = { email: '', password: '', passwordConfirmation: '', admin: true };
   
   handleSubmit = (e) => {
@@ -84,7 +84,7 @@ export default class ConnectedRegister extends React.Component {
   render() {
     return (
       <AuthConsumer>
-        { auth => <Register { ...this.props } auth={auth} /> }
+        { auth => <AdminRegister { ...this.props } auth={auth} /> }
       </AuthConsumer>
     )
   }
