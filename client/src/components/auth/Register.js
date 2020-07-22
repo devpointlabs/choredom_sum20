@@ -4,7 +4,7 @@ import { Button, Form, Segment, Header, } from 'semantic-ui-react';
 import { Link, } from 'react-router-dom';
 
 class Register extends React.Component {
-  state = { email: '', password: '', passwordConfirmation: ''};
+  state = { email: '', password: '', passwordConfirmation: '' };
   
   handleSubmit = (e) => {
     e.preventDefault();
