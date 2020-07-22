@@ -1,7 +1,9 @@
-import React from "react";
-import { Header, Button,  } from "semantic-ui-react";
+import React, { Component } from "react";
+import { Header, Button, Modal } from "semantic-ui-react";
 import FamForm from "../fams/FamForm";
 import { Link,} from 'react-router-dom';
+import Fams from '../fams/Fams';
+import { FamConsumer } from '../../providers/FamProvider';
 
 const Initial = () => (
   <>
@@ -12,9 +14,7 @@ const Initial = () => (
     <p>1. Ask someone in an existing family group to add you by your email.</p>
     <p>2. Start a new family group.</p>
     <div>
-      <Button as={Link} to="/familyform">
-        Start a family group
-      </Button>
+      <Fams/>
     </div>
   </>
 )

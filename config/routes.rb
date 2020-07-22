@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get '/addpoints/:user_id/:points', to: 'users#addpoints'
     get '/subpoints/:user_id/:points', to: 'users#subpoints'
     get '/userpoints/:user_id/:points', to: 'users#userpoints'
+    post '/:fam_id/join', to: 'famgroups#join'
   end
 end
 

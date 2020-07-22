@@ -25,7 +25,7 @@ class FamGroupProvider extends Component {
       .catch( err => console.log(err) )
   }
 
-  updateFamGroup = (user_id, id, famgroup) => {
+  updateFamGroup = (user_id, id, famgroup, history) => {
     axios.put(`/api/users/${user_id}/famgroups/${id}`, { famgroup } )
     .then( res => {
       const famgroups = this.state.famgroups.map( f => {
@@ -35,6 +35,7 @@ class FamGroupProvider extends Component {
         return f
       })
       this.setState({ famgroups: famgroups })
+      history.push('/admindash')
     })
     .catch( err => console.log(err) )
   }
@@ -48,6 +49,18 @@ class FamGroupProvider extends Component {
       .catch( err => console.log(err) )
   }
 
+  addMember = ( fam_id, email, history) => {
+    axios.post(`/api/${fam_id}/join`, email)
+    .then( res => {
+      const { famgroups } = this.state
+      this.setState({ famgroups: [ ...famgroups, res.data ]})
+      history.push('/admindash')
+    })
+    .catch( err => console.log(err) )
+}
+
+
+
   render() {
     return(
       <FamGroupContext.Provider value={{
@@ -56,6 +69,7 @@ class FamGroupProvider extends Component {
         addFamGroup: this.addFamGroup,
         updateFamGroup: this.updateFamGroup,
         deleteFamGroup: this.deleteFamGroup,
+        addMember: this.addMember,
       }}>
         { this.props.children }
       </FamGroupContext.Provider>
