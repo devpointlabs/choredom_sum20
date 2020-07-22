@@ -16,10 +16,7 @@ class Navbar extends Component {
     if (user) {
       return (
         <Menu.Menu position='right'>
-          <Menu.Item
-            name='logout'
-            onClick={ () => handleLogout(this.props.history) }
-            />
+          
           <Link to='/earn'>
             <Menu.Item
               id='earn'

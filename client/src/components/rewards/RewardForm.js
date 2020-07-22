@@ -25,8 +25,11 @@ class RewardForm extends Component {
     } else {
       this.props.addReward(this.props.user_id, this.state)
     }
+    this.props.close()
     this.setState({ reward_name: '', reward_description: '', reward_cost: '', reward_claimed: '', reward_used: '' })
   }
+
+  close = () => this.setState({ open: false })
 
   render() {
     const { reward_name, reward_description, reward_cost, } = this.state
