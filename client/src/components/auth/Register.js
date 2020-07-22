@@ -70,7 +70,7 @@ class Register extends React.Component {
             <Button primary type='submit'>Register</Button>
           </Segment>
           <Segment textAlign='center' basic>
-          <Button as={Link} to="/adminregister">
+            <Button as={Link} to="/adminregister">
               Register as an Admin
             </Button>
             <Button as={Link} to="/login">
