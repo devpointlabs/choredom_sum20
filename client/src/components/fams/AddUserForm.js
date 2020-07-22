@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, } from 'semantic-ui-react'
 
 class AddUserForm extends Component {
   state = { email: '' }
@@ -19,24 +19,26 @@ class AddUserForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-      const { email }
-      this.props.addMember(this.props.fam.id, this.state)
-      this.setState({ email })
+      this.props.addMember(this.props.fam_id, this.state)
+      this.props.close()
+      this.setState({ email: '' })
   }
+
+  close = () => this.setState({ open: false })
 
   render() {
     const { email, } = this.state
     return(
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Input
-          name='email'
-          value={email}
-          onChange={this.handleChange}
-          label='Email'
-          required
-        />
-        <Form.Button>Submit</Form.Button>
-      </Form>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Input
+                name='email'
+                value={email}
+                onChange={this.handleChange}
+                label='Email'
+                required
+              />
+              <Form.Button>Submit</Form.Button>
+          </Form>
     )
   }
 }

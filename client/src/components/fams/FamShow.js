@@ -3,15 +3,19 @@ import { FamConsumer } from '../../providers/FamProvider';
 import { Button, Card, Grid, Modal } from 'semantic-ui-react';
 import FamForm from './FamForm';
 import AddUserForm from './AddUserForm';
+import { FamGroupConsumer } from '../../providers/FamGroupProvider';
 
 class FamShow extends Component {
-  state = { editing: false }
+  state = { editing: false, modalopen: false, }
 
   toggleUpdate = () => this.setState({ editing: !this.state.editing })
 
+  open = () => this.setState({ modalopen: true })
+  close = () => this.setState({ modalopen: false })
+
   render() {
     const { id, user_id, fam_name, fam_admins, fam_members } = this.props.location.state
-    const { editing } = this.state
+    const { editing, modalopen } = this.state
     const { updateFam, deleteFam, history } = this.props
     return(
       <>
@@ -45,12 +49,12 @@ class FamShow extends Component {
           Delete
         </Button>
 
-        <Modal trigger={<Button>Add Member</Button>} centered={false}>
-            <Modal.Header>New Family Group</Modal.Header>
-            <Modal.Content>
-              <AddUserForm fam_id={id} addMember={addMember} history={history}/>
-            </Modal.Content>
-          </Modal>
+        <Modal trigger={<Button onClick={() => this.open()}>Add Member</Button>} centered={false} open={modalopen} onClose={this.close}>
+          <Modal.Header>New Family Group</Modal.Header>
+          <Modal.Content>
+            <AddUserForm fam_id={id} addMember={this.props.addMember} history={history} close={this.close}/>
+          </Modal.Content>
+        </Modal>
 
           </Card.Content>
         </Card>
@@ -89,7 +93,6 @@ const ConnectedFamShow = (props) => (
         {...props} 
         updateFam={value.updateFam} 
         deleteFam={value.deleteFam}
-
       />
     )}
   </FamConsumer>

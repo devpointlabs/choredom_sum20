@@ -27,8 +27,11 @@ class FamForm extends Component {
       const FamGroupName = { last_name: this.state.fam_name, user_id: this.props.userId }
       this.props.addFam(this.state, FamGroupName, this.props.addFamGroup, this.props.history)
     }
+    this.props.close()
     this.setState({ fam_name: '', fam_admins: '', fam_members: '' })
   }
+
+  close = () => this.setState({ open: false })
 
   render() {
     const { fam_name, fam_admins, fam_members } = this.state
