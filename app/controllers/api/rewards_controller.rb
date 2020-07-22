@@ -2,7 +2,15 @@ class Api::RewardsController < ApplicationController
   before_action :set_user
 
   def index
-    render json: @user.rewards
+    @rewards = []
+    @user.fams.each{ |f|
+      Reward.all.each{ |r| 
+        if f.id == r.famId
+          @rewards << r
+        end
+      }
+    }
+    render json: @rewards
   end
   
   def create
@@ -37,7 +45,7 @@ class Api::RewardsController < ApplicationController
   private
   
   def reward_params
-    params.require(:reward).permit(:reward_name, :reward_description, :reward_cost, :reward_claimed, :reward_used)
+    params.require(:reward).permit(:reward_name, :reward_description, :reward_cost, :reward_claimed, :reward_used, :famId)
   end
   
   def set_user
