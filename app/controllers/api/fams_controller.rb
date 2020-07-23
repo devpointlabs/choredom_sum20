@@ -5,6 +5,11 @@ class Api::FamsController < ApplicationController
     render json: Fam.find(params[:id]).users
   end
 
+
+  def members
+    render json: Fam.find(params[:fam_id]).users
+  end
+
   def userfams
     @fams = []
     Fam.all.map { |f|

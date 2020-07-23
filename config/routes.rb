@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :api do
     resources :fams do
+      get '/members', to: 'fams#members'
       resources :famgroups
     end
 
     resources :users do
       resources :tasks
-    resources :rewards
+      resources :rewards
     end
     get 'userfams/:user_id', to: 'fams#userfams'
     get '/:user_id/rewardclaimed/:reward_id', to: 'rewards#rewardclaimed'
