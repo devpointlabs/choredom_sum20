@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
+import { FamConsumer } from '../../providers/FamProvider';
 
 class RewardForm extends Component {
-  state = { famId: null, reward_name: '', reward_description: '', reward_cost: '', reward_claimed: false, reward_used: false }
+  state = { famId: null, reward_name: '', reward_description: '', reward_cost: '', reward_claimed: false, reward_used: false, }
 
   componentDidMount() {
+    this.props.getAllFams(this.props.user_id)
     if (this.props.id) {
       const { reward_name, reward_description, reward_cost, famId } = this.props
       this.setState({ reward_name, reward_description, reward_cost, famId })
     }
   }
 
-  handleChange = (e) => {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
+  setFamilies = () => {
+    let famOptions = []
+    this.props.fams.map( f =>
+      famOptions.push({ key: f.id, text: f.fam_name, value: f.id })
+    )
+    return famOptions
   }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value, });
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -31,8 +38,11 @@ class RewardForm extends Component {
 
   close = () => this.setState({ open: false })
 
+
+
+
   render() {
-    const { reward_name, reward_description, reward_cost, famId, } = this.state
+    const { reward_name, reward_description, reward_cost, famId } = this.state
     return(
       <Form onSubmit={this.handleSubmit}>
         <Form.Input
@@ -56,18 +66,26 @@ class RewardForm extends Component {
           label='Reward Cost'
           required
         />
-        <Form.Input
+         <Form.Select
           name='famId'
           value={famId}
+          label='Family'
+          placeholder='Select Family'
           onChange={this.handleChange}
-          label='Fam Id'
-          required
-          type='numbers'
+          fluid
+          options={this.setFamilies()}
         />
+
         <Form.Button>Submit</Form.Button>
       </Form>
     )
   }
 }
 
-export default RewardForm;
+const ConnectedRewardForm = (props) => (
+  <FamConsumer>
+    { values => <RewardForm {...props} {...values} /> }
+  </FamConsumer>
+)
+
+export default ConnectedRewardForm;
