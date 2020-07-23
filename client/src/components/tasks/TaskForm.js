@@ -86,6 +86,3 @@ const ConnectedTaskForm = (props) => (
 )
 
 export default ConnectedTaskForm;
-       
-       
-      
