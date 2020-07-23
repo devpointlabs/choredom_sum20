@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
+import { FamConsumer } from '../../providers/FamProvider';
 
 class TaskForm extends Component {
   state = { famId: null, task_name: '', task_description: '', task_value: '' }
 
   componentDidMount() {
+    this.props.getAllFams(this.props.user_id)
     if (this.props.id) {
       const { task_name, task_description, task_value, famId } = this.props
       this.setState({ task_name, task_description, task_value, famId })
     }
   }
 
-  handleChange = (e) => {
-    const { name, value } = e.target
-    this.setState({ [name]: value })
+  setFamilies = () => {
+    let famOptions = []
+    this.props.fams.map( f =>
+      famOptions.push({ key: f.id, text: f.fam_name, value: f.id })
+    )
+    return famOptions
   }
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value, });
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -56,18 +63,26 @@ class TaskForm extends Component {
           label='Task Value'
           required
         />
-        <Form.Input
-          name='famId'
-          value={famId}
-          onChange={this.handleChange}
-          label='Fam Id'
-          required
-          type='numbers'
-        />
+        <Form.Select
+            name='famId'
+            value={famId}
+            label='Family'
+            placeholder='Select Family'
+            onChange={this.handleChange}
+            fluid
+            options={this.setFamilies()}
+          />
+
         <Form.Button>Submit</Form.Button>
       </Form>
     )
   }
 }
 
-export default TaskForm;
+const ConnectedTaskForm = (props) => (
+  <FamConsumer>
+    { values => <TaskForm {...props} {...values} /> }
+  </FamConsumer>
+)
+
+export default ConnectedTaskForm;
