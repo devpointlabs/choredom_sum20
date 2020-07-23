@@ -4,15 +4,15 @@ import { Button, Form, Segment, Header, } from 'semantic-ui-react';
 import { Link, } from 'react-router-dom';
 
 class AdminRegister extends React.Component {
-  state = { email: '', password: '', passwordConfirmation: '', admin: true };
+  state = { name: '', email: '', password: '', passwordConfirmation: '', admin: true };
   
   handleSubmit = (e) => {
     e.preventDefault();
-    const { email, password, passwordConfirmation, admin } = this.state;
+    const { name, email, password, passwordConfirmation, admin } = this.state;
     const { auth: { handleRegister, }, history, } = this.props;
 
     if (password === passwordConfirmation)
-      handleRegister({ email, password, passwordConfirmation, admin }, history);
+      handleRegister({ name, email, password, passwordConfirmation, admin }, history);
     else
       alert('Passwords Do Not Match!')
   }
