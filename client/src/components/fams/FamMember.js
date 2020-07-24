@@ -7,13 +7,13 @@ const FamMember = ({ user, name, image, }) => (
   <>
     <p> {name} </p>
     <p> {image} </p>
-        <Grid.Column width={4}>
-          <Image src={image || defaultImage} 
+      <Grid.Column width={4}>
+        <Image src={image || defaultImage} 
           circular
           size= 'tiny'
           target='_blank'
-          />
-        </Grid.Column>
+        />
+      </Grid.Column>
   </>
 )
 

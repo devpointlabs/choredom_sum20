@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { AuthConsumer, } from "../../providers/AuthProvider";
-import { Menu, Button, Modal, Accordion, } from 'semantic-ui-react'
+import { Menu, Button, Modal, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
 import { Image, Divider } from 'semantic-ui-react';
 import Fams from '../fams/Fams';
-import Profile from '../auth/Profile';
 
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
-
 
 class Navbar extends Component {
 
@@ -88,6 +86,7 @@ class Navbar extends Component {
       )
     }
   }
+
   render() {
     return (
       <div>
@@ -105,6 +104,7 @@ class Navbar extends Component {
     )
   }
 }
+
 export class ConnectedNavbar extends React.Component {
   render() {
     return (
@@ -116,4 +116,5 @@ export class ConnectedNavbar extends React.Component {
     )
   }
 }
+
 export default withRouter(ConnectedNavbar);

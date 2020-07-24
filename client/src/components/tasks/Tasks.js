@@ -7,6 +7,7 @@ import { Button, Modal } from 'semantic-ui-react';
 
 class Tasks extends React.Component {
   state = { modalopen: false, }
+  
   componentDidMount() {
     this.props.getAllTasks(this.props.user.id)
   }
@@ -18,21 +19,21 @@ class Tasks extends React.Component {
     const {addTask, tasks, user} = this.props
     const { modalopen } = this.state
     return (
-    <>
-      <h1>Tasks</h1>
-        
-      <Modal trigger={<Button onClick={() => this.open()}>Create Task</Button>} centered={false} open={modalopen} onClose={this.close}>
-        <Modal.Header>Create New Task</Modal.Header>
+      <>
+        <h1>Tasks</h1>
+          
+        <Modal trigger={<Button onClick={() => this.open()}>Create Task</Button>} centered={false} open={modalopen} onClose={this.close}>
+          <Modal.Header>Create New Task</Modal.Header>
           <Modal.Content>
             <TaskForm addTask={addTask} user_id={user.id} close={this.close}/>
           </Modal.Content>
-      </Modal>
-      <br/>
-        {
-          tasks ?
-            <TaskList tasks={tasks}/>
-            : <p>No Tasks</p>
-        }
+        </Modal>
+        <br/>
+          {
+            tasks ?
+              <TaskList tasks={tasks}/>
+              : <p>No Tasks</p>
+          }
       </>
     )
   }

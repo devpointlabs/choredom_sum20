@@ -44,20 +44,6 @@ class FamForm extends Component {
           label='Family Name'
           required
         />
-        {/* <Form.Input
-          name='fam_admins'
-          value={fam_admins}
-          onChange={this.handleChange}
-          label='Family Admins'
-          required
-        />
-        <Form.Input
-          name='fam_members'
-          value={fam_members}
-          onChange={this.handleChange}
-          label='Family Members'
-          required
-        /> */}
         <Form.Button>Submit</Form.Button>
       </Form>
     )

@@ -52,4 +52,5 @@ class Api::FamgroupsController < ApplicationController
     def famgroup_params
       params.require(:famgroup).permit(:last_name, :user_id)
     end
+    
 end

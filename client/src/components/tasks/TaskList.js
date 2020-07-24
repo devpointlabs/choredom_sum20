@@ -7,7 +7,7 @@ const TaskList = ({ tasks }) => (
       <Link to={{
         pathname: `/tasks/${t.id}`,
         state: {...t}
-      }}>
+        }}>
         { t.task_name }
       </Link>
       <br />

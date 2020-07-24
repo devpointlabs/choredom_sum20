@@ -90,4 +90,5 @@ class AuthProvider extends Component {
     )
   }
 }
+
 export default AuthProvider

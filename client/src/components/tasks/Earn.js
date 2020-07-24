@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Button, Modal, Grid } from 'semantic-ui-react';
+import { Container, } from 'semantic-ui-react';
 import UserTasks from '../tasks/UserTasks'
 
 const Earn = () => (
@@ -10,7 +10,6 @@ const Earn = () => (
         < UserTasks />
       </Container>
   </>
-       
-    
-  )
+)
+
 export default Earn;
