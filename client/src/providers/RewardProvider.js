@@ -52,6 +52,16 @@ class RewardProvider extends Component {
       .catch( err => console.log(err) )
   }
 
+  useReward = (id, history) => {
+    axios.get(`/api/${id}/usereward`)
+      .then( res => {
+        const { rewards } = this.state
+        this.setState({ rewards: rewards.filter( t => t.id !== id )})
+        history.push('/userdash')
+      })
+      .catch( err => console.log(err) )
+  }
+
   claimReward = (user_id, id, history, subPoints, points) => {
     axios.get(`/api/${user_id}/rewardclaimed/${id}`)
     .then( res => {
@@ -78,6 +88,7 @@ class RewardProvider extends Component {
         updateReward: this.updateReward,
         deleteReward: this.deleteReward,
         claimReward: this.claimReward,
+        useReward: this.useReward,
       }}>
         { this.props.children }
       </RewardContext.Provider>

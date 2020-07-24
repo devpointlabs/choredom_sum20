@@ -1,6 +1,4 @@
 import React from 'react';
-import { AuthConsumer, } from "../../providers/AuthProvider";
-import { Link } from 'react-router-dom';
 import { Image, Grid } from 'semantic-ui-react';
 
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';

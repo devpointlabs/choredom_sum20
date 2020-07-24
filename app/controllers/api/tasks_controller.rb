@@ -37,7 +37,7 @@ class Api::TasksController < ApplicationController
   end
 
   def taskcomplete
-    @task = @user.tasks.find(params[:task_id])
+    @task = Task.find(params[:task_id])
     @task.update(task_complete: !@task.task_complete)
     render json: @task
   end
