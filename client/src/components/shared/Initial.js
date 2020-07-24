@@ -18,4 +18,5 @@ const Initial = () => (
     </div>
   </>
 )
+
 export default Initial;

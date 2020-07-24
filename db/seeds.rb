@@ -32,4 +32,5 @@
     user_id: user.id
   )
 end
+
 puts "Data Seeded."

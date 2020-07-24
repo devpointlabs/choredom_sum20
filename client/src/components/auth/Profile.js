@@ -54,7 +54,6 @@ class Profile extends React.Component {
           size= 'small'
           target='_blank'
           as='a'
-
           />
         </Grid.Column>
         <Grid.Column width={8}>
@@ -79,13 +78,13 @@ class Profile extends React.Component {
         <Dropzone
           onDrop={this.onDrop}
           multiple={false}
-        >
+          >
           {({ getRootProps, getInputProps, isDragActive }) => {
             return (
               <div
                 {...getRootProps()}
                 style={styles.dropzone}
-              >
+                >
                 <input {...getInputProps()} />
                 {
                   isDragActive ?
@@ -96,7 +95,7 @@ class Profile extends React.Component {
             )
           }}
         </Dropzone>
-      </Grid.Column>
+        </Grid.Column>
         </Grid.Column>
         <Grid.Column width={8}>
           <Form.Input
@@ -161,6 +160,5 @@ const styles = {
     padding: "10px",
   },
 }
-
 
 export default ConnectedProfile;

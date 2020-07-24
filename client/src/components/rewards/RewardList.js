@@ -7,7 +7,7 @@ const RewardsList = ({ rewards, user }) => (
       <Link to={{
         pathname: `/rewards/${r.id}`,
         state: {...r, user}
-      }}>
+        }}>
         { r.reward_name }
       </Link>
       <br />

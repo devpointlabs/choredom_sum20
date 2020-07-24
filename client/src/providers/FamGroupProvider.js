@@ -59,8 +59,6 @@ class FamGroupProvider extends Component {
     .catch( err => console.log(err) )
 }
 
-
-
   render() {
     return(
       <FamGroupContext.Provider value={{
@@ -70,7 +68,7 @@ class FamGroupProvider extends Component {
         updateFamGroup: this.updateFamGroup,
         deleteFamGroup: this.deleteFamGroup,
         addMember: this.addMember,
-      }}>
+        }}>
         { this.props.children }
       </FamGroupContext.Provider>
     )

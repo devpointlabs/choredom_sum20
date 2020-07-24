@@ -1,4 +1,3 @@
-//This becomes the Manage Reward page
 import React from 'react';
 import { RewardConsumer } from '../../providers/RewardProvider';
 import RewardForm from './RewardForm';
@@ -22,17 +21,17 @@ class Rewards extends React.Component {
       <>
        <h1>Rewards</h1>
         <Modal trigger={<Button onClick={() => this.open()}>Create Reward</Button>} centered={false} open={modalopen} onClose={this.close}>
-              <Modal.Header>Create New Reward</Modal.Header>
-              <Modal.Content>
-                <RewardForm addReward={addReward} user_id={user.id} close={this.close}/>  
-              </Modal.Content>
-            </Modal>
-          <br/>
-          {
-            rewards ? 
-              <RewardList user={user} rewards={rewards} />
-              : <p>No Rewards</p>
-          }
+          <Modal.Header>Create New Reward</Modal.Header>
+          <Modal.Content>
+            <RewardForm addReward={addReward} user_id={user.id} close={this.close}/>  
+          </Modal.Content>
+        </Modal>
+        <br/>
+        {
+          rewards ? 
+            <RewardList user={user} rewards={rewards} />
+            : <p>No Rewards</p>
+        }
       </>
     )
   }

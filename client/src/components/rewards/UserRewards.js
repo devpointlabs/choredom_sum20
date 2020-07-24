@@ -1,31 +1,27 @@
-//This becomes the Manage Reward page
 import React from 'react';
 import { RewardConsumer } from '../../providers/RewardProvider';
 import UserRewardList from './UserRewardList';
 import { AuthConsumer } from '../../providers/AuthProvider';
-import { Button, Modal, Card } from 'semantic-ui-react';
 
 class UserRewards extends React.Component {
   componentDidMount() {
     this.props.getAllRewards(this.props.user.id)
-  }
+    }
   render() {
     const {rewards, user, claimReward, subPoints, history} = this.props
 
     return (
       <>
-  
-     
-          {
-            rewards ? 
-              <UserRewardList user={user} rewards={rewards} subPoints={subPoints} claimReward={claimReward} history={history} />
-              : <p>No Rewards</p>
-          }
- 
+        {
+          rewards ? 
+            <UserRewardList user={user} rewards={rewards} subPoints={subPoints} claimReward={claimReward} history={history} />
+            : <p>No Rewards</p>
+        }
       </>
     )
   }
 }
+
 const ConnectedRewards = (props) => (
   <RewardConsumer>
     {
@@ -35,6 +31,7 @@ const ConnectedRewards = (props) => (
     }
   </RewardConsumer>
 )
+
 const MegaRewards = (props) => (
   <AuthConsumer>
     {
@@ -42,4 +39,5 @@ const MegaRewards = (props) => (
     }
   </AuthConsumer>
 )
+
 export default MegaRewards;

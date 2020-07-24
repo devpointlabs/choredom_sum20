@@ -20,8 +20,8 @@ class UserDash extends React.Component {
       <>
         <h1>My Points</h1>
         <p>{ Number(points) }</p>
-      <div>
-            {this.props.rewards.map( r => r.reward_claimed ? <ClaimedReward {...r} usedReward={this.props.useReward}/> : "" )}
+        <div>
+          {this.props.rewards.map( r => r.reward_claimed ? <ClaimedReward {...r} usedReward={this.props.useReward}/> : "" )}
         </div>
       </>
     )

@@ -52,7 +52,4 @@ class Api::TasksController < ApplicationController
     @user = User.find(params[:user_id])
   end
   
-  
-
-
 end

@@ -38,9 +38,6 @@ class RewardForm extends Component {
 
   close = () => this.setState({ open: false })
 
-
-
-
   render() {
     const { reward_name, reward_description, reward_cost, famId } = this.state
     return(

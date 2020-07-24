@@ -26,7 +26,6 @@ class RewardProvider extends Component {
       .catch( err => console.log(err) )
   }
   
-  // we wernt pulling in history as a prop from the handleSubmit
   updateReward = (user_id, id, reward, history) => {
     axios.put(`/api/users/${user_id}/rewards/${id}`, { reward } )
     .then( res => {

@@ -33,64 +33,41 @@ class FamShow extends Component {
         <Card>
           <Card.Content header={fam_name} />
           <Card.Content>
-          {members.map( m => m.admin ? <FamMember {...m} /> : "" )}
+            {members.map( m => m.admin ? <FamMember {...m} /> : "" )}
           </Card.Content>
           <Card.Content extra>
             {members.map( m => m.admin === false || m.admin === null ? <FamMember {...m}  /> : "" )}
           </Card.Content>
           <Card.Content>
-          { editing ?
-            <FamForm
-              user_id={user_id}  
-              id={id}
-              fam_name={fam_name}
-              fam_admins={fam_admins}
-              fam_members={fam_members}
-              updateFam={updateFam}
-              toggleUpdate={this.toggleUpdate}
-              history={history}
-            />
-          :
-          <Button onClick={this.toggleUpdate}>
-            Edit
-          </Button>
-        }
-        <Button onClick={() => deleteFam(id, history)}>
-          Delete
-        </Button>
+            { editing ?
+              <FamForm
+                user_id={user_id}  
+                id={id}
+                fam_name={fam_name}
+                fam_admins={fam_admins}
+                fam_members={fam_members}
+                updateFam={updateFam}
+                toggleUpdate={this.toggleUpdate}
+                history={history}
+              />
+              :
+              <Button onClick={this.toggleUpdate}>
+                Edit
+              </Button>
+            }
+              <Button onClick={() => deleteFam(id, history)}>
+                Delete
+              </Button>
 
-        <Modal trigger={<Button onClick={() => this.open()}>Add Member</Button>} centered={false} open={modalopen} onClose={this.close}>
-          <Modal.Header>New Family Group</Modal.Header>
-          <Modal.Content>
-            <AddUserForm fam_id={id} addMember={this.props.addMember} history={history} close={this.close}/>
-          </Modal.Content>
-        </Modal>
-
+              <Modal trigger={<Button onClick={() => this.open()}>Add Member</Button>} centered={false} open={modalopen} onClose={this.close}>
+                <Modal.Header>New Family Group</Modal.Header>
+                <Modal.Content>
+                  <AddUserForm fam_id={id} addMember={this.props.addMember} history={history} close={this.close}/>
+                </Modal.Content>
+              </Modal>
           </Card.Content>
         </Card>
       </Grid.Column>
-        {/* <h1>{fam_name}</h1>
-        <h3>{fam_admins}</h3>
-        <h4>{fam_members}</h4> */}
-        {/* { editing ?
-            <FamForm 
-              user_id={user_id}  
-              id={id}
-              fam_name={fam_name}
-              fam_admins={fam_admins}
-              fam_members={fam_members}
-              updateFam={updateFam}
-              toggleUpdate={this.toggleUpdate}
-              history={history}
-            />
-          :
-          <Button onClick={this.toggleUpdate}>
-            Edit
-          </Button>
-        }
-        <Button onClick={() => deleteFam(id, history)}>
-          Delete
-        </Button> */}
       </>
     )
   }

@@ -8,30 +8,29 @@ const UserTaskList = ({ tasks, user, addPoints, completeTask, history }) => (
       {
         tasks.map( t =>
           <>
-          <Grid.Column>
+            <Grid.Column>
               <Card>
                 <Card.Content header={t.task_name}/>
                 <Card.Content>
-                { t.task_description }
+                  { t.task_description }
                 </Card.Content>
                 <Card.Content>
-                { t.task_value }
-                {
-                  t.task_complete ? 
-                    <p>claimed</p>
-                  :
-                    <Button onClick={ () => completeTask(user.id, t.id, history, addPoints, t.task_value) }>Complete Task</Button>
-                }
+                  { t.task_value }
+                  {
+                    t.task_complete ? 
+                      <p>claimed</p>
+                    :
+                      <Button onClick={ () => completeTask(user.id, t.id, history, addPoints, t.task_value) }>Complete Task</Button>
+                  }
                 </Card.Content>
               </Card> 
-          </Grid.Column>
-      </>
-  )
-}
-</Grid>
-</>
+            </Grid.Column>
+          </>
+          )
+        }
+    </Grid>
+  </>
 )  
-
 
 export default UserTaskList;
 
