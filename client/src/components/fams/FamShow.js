@@ -40,7 +40,7 @@ class FamShow extends Component {
           </Card.Content>
           <Card.Content>
           { editing ?
-            <FamForm 
+            <FamForm
               user_id={user_id}  
               id={id}
               fam_name={fam_name}
