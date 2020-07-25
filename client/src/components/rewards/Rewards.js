@@ -19,7 +19,7 @@ class Rewards extends React.Component {
     const { modalopen } = this.state
     return (
       <>
-       <h1>Rewards</h1>
+       <h1>Available Rewards</h1>
         <Modal trigger={<Button onClick={() => this.open()}>Create Reward</Button>} centered={false} open={modalopen} onClose={this.close}>
           <Modal.Header>Create New Reward</Modal.Header>
           <Modal.Content>

@@ -25,11 +25,7 @@ const HeaderText = styled.h1`
 const AdminDash = () => (
   <>
     <p fontSize='14px' font-family='Work Sans'>My Family</p>
-    <HeaderText fSize="large">My Family</HeaderText>
-    <p> My Family Section Across Top Row </p>
-    <div>
-      < Fams />
-    </div>
+    < Fams />
     <Grid columns='equal'>
       <Grid.Column>
         < Rewards />

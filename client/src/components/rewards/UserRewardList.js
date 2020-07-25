@@ -15,7 +15,7 @@ const UserRewardList = ({ rewards, user, subPoints, claimReward, history }) => (
                 <Card.Content>
                   { r.reward_description }
                 </Card.Content>
-                <Card.Content>
+                  <Card.Content>
                   { r.reward_cost }
                   {
                     r.reward_claimed ? 

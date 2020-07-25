@@ -1,10 +1,10 @@
 import React from 'react';
-import { Container, } from 'semantic-ui-react';
+import { Container, Segment } from 'semantic-ui-react';
 import UserTasks from '../tasks/UserTasks'
 import { Header } from 'semantic-ui-react'
 import styled from 'styled-components';
 
-const Container = styled.div`
+const DivContainer = styled.div`
   background: linear-gradient(to top right, pink, gold);
 `
 
@@ -23,7 +23,7 @@ const HeaderText = styled.h1`
 
 const Earn = () => (
   <>
-    <div>
+    <DivContainer>
       <h1 textAlign = "center"> Earn Points</h1>
       <Segment>
         <p textAlign="center"> Complete tasks to earn points </p>
@@ -31,8 +31,8 @@ const Earn = () => (
           < UserTasks />
         </Container>
       </Segment>
-    </>
-  </div>
+    </DivContainer>
+  </>
 )
 
 export default Earn;

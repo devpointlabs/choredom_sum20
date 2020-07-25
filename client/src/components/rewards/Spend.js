@@ -4,7 +4,7 @@ import UserRewards from '../rewards/UserRewards'
 import {Header} from 'semantic-ui-react'
 import styled from 'styled-components';
 
-const Container = styled.div`
+const DivContainer = styled.div`
   background: linear-gradient(to top right, blue, gold);
 `
 
@@ -23,7 +23,7 @@ const HeaderText = styled.h1`
 
 const Spend = () => (
   <>
-  <div>
+  <DivContainer>
     <h1 textAlign = "center"> Spend Points</h1>
     <Segment>
       <p textAlign="center"> Spend points on rewards </p>
@@ -31,8 +31,8 @@ const Spend = () => (
         <UserRewards />
       </Container>
     </Segment>
+    </DivContainer>
   </>
-  </div>
 )
 
 export default Spend;
