@@ -25,12 +25,12 @@ const Spend = () => (
   <>
   <div>
     <h1 textAlign = "center"> Spend Points</h1>
-  <Segment>
-    <p textAlign="center"> Spend points on rewards </p>
-    <Container>
-      <UserRewards />
-    </Container>
-  </Segment>
+    <Segment>
+      <p textAlign="center"> Spend points on rewards </p>
+      <Container>
+        <UserRewards />
+      </Container>
+    </Segment>
   </>
   </div>
 )
