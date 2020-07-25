@@ -1,18 +1,16 @@
 import React from 'react';
-import { Container, Button, Modal, Grid } from 'semantic-ui-react';
+import { Container, Button, Modal, Grid, Segment } from 'semantic-ui-react';
 import UserRewards from '../rewards/UserRewards'
 import {Header} from 'semantic-ui-react'
-import styled from 'styledComp';
+import styled from 'styled-components';
 
 const Container = styled.div`
   background: linear-gradient(to top right, blue, gold);
 `
-<Segment basic>
 
-const Transparent = styled.div`
+const Transparent = styled(Segment)`
   background: transparent !important;
 `
-<Segment as={Transparent}>
 
 const HeaderText = styled.h1`
   color: black !important;
