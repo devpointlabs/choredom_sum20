@@ -3,7 +3,7 @@ import { TaskConsumer } from '../../providers/TaskProvider';
 import TaskForm from './TaskForm';
 import TaskList from './TaskList';
 import { AuthConsumer } from '../../providers/AuthProvider';
-import { Grid, Container, Modal, Icon } from 'semantic-ui-react';
+import { Grid, Modal, Icon } from 'semantic-ui-react';
 
 class Tasks extends React.Component {
   state = { modalopen: false, }
@@ -35,7 +35,6 @@ class Tasks extends React.Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <br/>
           {
             tasks ?
               <TaskList tasks={tasks}/>

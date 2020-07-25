@@ -4,7 +4,6 @@ import { Grid, Card, Header } from 'semantic-ui-react';
 
 const FamList = ({ fams }) => (
   <>
-    <Grid columns={5} padded doubling>
     {
       fams.map( f => 
         <>
@@ -28,7 +27,6 @@ const FamList = ({ fams }) => (
         </>
       )
     }
-    </Grid>
   </>
 )
 
