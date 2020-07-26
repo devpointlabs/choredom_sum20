@@ -6,12 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 .userimage {
   padding: 10px
 }
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');

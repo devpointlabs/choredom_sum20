@@ -1,15 +1,16 @@
 import React from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { StyledSegment, SegmentHeader, SegmentText, StyledButton } from '../styledComp/DashStyles';
+import styled from 'styled-components';
 
 const ClaimedReward = ({ reward_name, reward_description, usedReward, id}) => (
   <>
-  <Card>
-      <Card.Content>
-        <p> {reward_name} </p>
-        <p> {reward_description} </p>
-        <Button onClick={() => usedReward(id)}>use reward</Button>
-      </Card.Content>
-    </Card>
+  <StyledSegment>
+    <SegmentHeader>{reward_name}</SegmentHeader>
+    <SegmentText> {reward_description}</SegmentText>
+    <p align='right'>
+      <StyledButton onClick={() => usedReward(id)}>Use Reward</StyledButton>
+    </p>
+  </StyledSegment>
   </>
 )
 

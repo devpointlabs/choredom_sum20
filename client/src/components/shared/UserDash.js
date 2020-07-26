@@ -1,12 +1,10 @@
 import React from 'react';
-import { Container, Button, Modal, Grid, Header, Card } from 'semantic-ui-react';
-import UserRewards from '../rewards/UserRewards';
-import UserTasks from '../tasks/UserTasks'
+import { Segment, Container, Button, Modal, Grid, Header, Card } from 'semantic-ui-react';
 import { AuthConsumer } from '../../providers/AuthProvider';
-import Fams from '../fams/Fams';
 import { RewardConsumer } from '../../providers/RewardProvider';
-import axios from 'axios';
 import ClaimedReward from '../rewards/ClaimedReward'
+import styled from 'styled-components';
+import { StyledSegment, SegmentText, PointsText } from '../styledComp/DashStyles';
 
 class UserDash extends React.Component {
   
@@ -18,14 +16,31 @@ class UserDash extends React.Component {
     const { points } = this.props.user
     return (
       <>
-        <h1>My Points</h1>
-        <p>{ Number(points) }</p>
-        <div>
-          {this.props.rewards.map( r => r.reward_claimed ? <ClaimedReward {...r} usedReward={this.props.useReward}/> : "" )}
-        </div>
+      <br/>
+      <Grid columns='equal'>
+        <Grid.Row>
+          <Grid.Column>
+            <StyledSegment inverted color='grey' tertiary>
+            <SegmentText>My Points</SegmentText>
+            <PointsText>{ points }</PointsText>
+            </StyledSegment>
+          </Grid.Column>
+          <Grid.Column width={12}>
+            <StyledSegment>
+              <SegmentText>My Family</SegmentText>
+            </StyledSegment>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Column>
+          { this.props.rewards.map( r => r.reward_claimed ?
+          <ClaimedReward {...r} usedReward={this.props.useReward}/>
+          : "Keep working hard to earn a reward"
+           )}
+        </Grid.Column>
+      </Grid>
       </>
     )
-  }
+  } 
 }
 
 const RewardUserDash = (props) => (
