@@ -5,7 +5,7 @@ export const RegisterContainer = styled.form`
   flex-direction: column;
   position: relative;
   padding: 10px 10px;
-  top: 100px;
+  top: 10px;
 `;
 
 export const LogoImg = styled.img`
@@ -23,7 +23,7 @@ export const LogoContainer = styled.div`
 export const RegisterBtn = styled.button`
   border-radius: 8px; 
   border: none;
-  padding: 15px 32px;
+  padding: 15px 3px;
   width: 118px;
   height: 56px;
   font-family: 'Work Sans';
@@ -32,28 +32,38 @@ export const RegisterBtn = styled.button`
   background-color: #272643;
 `;
 
-export const HaveAccountBtn = styled.button`
-  border-radius: 8px;
+export const RegisterAdminBtn = styled.button`
+  border-radius: 8px; 
   border: none;
-  width: 266px;
+  padding: 15px 3px;
+  width: 118px;
   height: 56px;
   font-family: 'Work Sans';
   font-size: 18px;
   color: black;
-  background-color: light-grey;
+  background-color: #E5E7E9;
 `;
 
-export const HaveAccountBtnContainer = styled.div`
-  padding: 0px 150px
-  
+export const HaveAccountBtn = styled.button`
+  border-radius: 8px; 
+  border: none;
+  padding: 15px 3px;
+  width: 118px;
+  height: 56px;
+  font-family: 'Work Sans';
+  font-size: 18px;
+  background-color: #E5E7E9;
+  color: black;
 `;
-
 
 export const RegisterInput = styled.input`
   width: 556px;
   height: 46px;
   border: none;
- 
+  font-family: 'Work Sans';
+  font-size: 16px;
+  background: #F2F3F4;
+  border-bottom: 1px solid #000000;
 `;
 
 export const RegisterInputLabel = styled.text`
@@ -61,5 +71,6 @@ export const RegisterInputLabel = styled.text`
   height: 22px;
   weight: 400;
   font-family: 'Work Sans';
-  font-size: 18px;
-`;
+  font-size: 16px;
+`;  
+
