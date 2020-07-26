@@ -1,18 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Segment } from 'semantic-ui-react';
+import { StyledSegment, SegmentHeader, SegmentText, SegmentCost } from '../styledComp/DashStyles';
 
 const RewardsList = ({ rewards, user }) => (
   rewards.map( r => 
     <>
-    <Segment>
       <Link to={{
-        pathname: `/rewards/${r.id}`,
-        state: {...r, user}
-        }}>
-        { r.reward_name }
+      pathname: `/rewards/${r.id}`,
+      state: {...r, user}
+      }}>
+        <StyledSegment>
+          <SegmentHeader>{ r.reward_name }</SegmentHeader>
+          <SegmentText>{ r.reward_description}</SegmentText>
+          <SegmentCost>${ r.reward_cost}</SegmentCost>
+        </StyledSegment>
       </Link>
-    </Segment>
+      <br/>
     </>
   )
 )

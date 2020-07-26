@@ -7,6 +7,7 @@ import { Modal, Grid, Icon } from 'semantic-ui-react';
 
 class Rewards extends React.Component {
   state = { modalopen: false, }
+  
   componentDidMount() {
     this.props.getAllRewards(this.props.user.id)
   }
@@ -25,7 +26,7 @@ class Rewards extends React.Component {
               <h1>Available Rewards</h1>
             </Grid.Column>
             <Grid.Column textAlign='right'>
-              <Modal trigger={<Icon color="blue" size="big" name='plus circle' onClick={() => this.open()} />} centered={false} open={modalopen} onClose={this.close}>
+              <Modal trigger={<Icon color="272643" size="big" name='plus circle' onClick={() => this.open()} />} centered={false} open={modalopen} onClose={this.close}>
                 <Modal.Header>Create New Reward</Modal.Header>
                 <Modal.Content>
                   <RewardForm addReward={addReward} user_id={user.id} close={this.close}/>  
@@ -34,6 +35,7 @@ class Rewards extends React.Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        <br/>
         {
           rewards ? 
             <RewardList user={user} rewards={rewards} />
@@ -43,6 +45,7 @@ class Rewards extends React.Component {
     )
   }
 }
+
 const ConnectedRewards = (props) => (
   <RewardConsumer>
     {
@@ -52,6 +55,7 @@ const ConnectedRewards = (props) => (
     }
   </RewardConsumer>
 )
+
 const MegaRewards = (props) => (
   <AuthConsumer>
     {
@@ -59,4 +63,5 @@ const MegaRewards = (props) => (
     }
   </AuthConsumer>
 )
+
 export default MegaRewards;

@@ -18,6 +18,7 @@ const fontSize = (size) => {
 
 const HeaderText = styled.h1`
   color: black
+  font-family: Work Sans;
   text-align: center;
   font-size: ${props => fontSize(props.fSize)} !important;
 `

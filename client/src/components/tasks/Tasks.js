@@ -23,10 +23,10 @@ class Tasks extends React.Component {
         <Grid>
           <Grid.Row columns={2}>
             <Grid.Column textAlign='left'>
-                <h1>Available Tasks</h1>
+              <h1>Available Tasks</h1>
             </Grid.Column>
             <Grid.Column textAlign='right'>
-              <Modal trigger={<Icon color="blue" size="big" name='plus circle' onClick={() => this.open()} />} centered={false} open={modalopen} onClose={this.close}>
+              <Modal trigger={<Icon color="272643" size="big" name='plus circle' onClick={() => this.open()} />} centered={false} open={modalopen} onClose={this.close}>
                 <Modal.Header>Create New Task</Modal.Header>
                 <Modal.Content>
                   <TaskForm addTask={addTask} user_id={user.id} close={this.close}/>
@@ -35,6 +35,7 @@ class Tasks extends React.Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        <br/>
           {
             tasks ?
               <TaskList tasks={tasks}/>

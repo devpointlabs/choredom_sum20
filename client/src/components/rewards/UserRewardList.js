@@ -1,33 +1,44 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Card, Grid, Button } from 'semantic-ui-react';
-import { AuthConsumer } from '../../providers/AuthProvider';
+import { Grid } from 'semantic-ui-react';
+import { SpendButton, RewardNameText, RewardDescriptionText, RewardCostText, Claimed, StyledCard } from '../styledComp/SpendStyles';
+import '../../index.css'
 
 const UserRewardList = ({ rewards, user, subPoints, claimReward, history }) => (
   <>
-    <Grid columns={3} padded doubling>
+    <Grid columns={3}>
       {
         rewards.map( r =>
           <>
             <Grid.Column>
-              <Card>
-                <Card.Content header={r.reward_name}/>
-                <Card.Content>
-                  { r.reward_description }
-                </Card.Content>
-                  <Card.Content>
-                  { r.reward_cost }
+              <StyledCard>
+                <Grid.Row>
+                <RewardNameText>{r.reward_name}</RewardNameText>
+                </Grid.Row>
+                <Grid.Row>
+                  <RewardDescriptionText>{ r.reward_description }</RewardDescriptionText>
+                </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column floated='left'>
+                    {
+                      r.reward_claimed?
+                        <></>
+                      :
+                        <RewardCostText>{ r.reward_cost }</RewardCostText>
+                    }
+                  </Grid.Column>
+                <Grid.Column floated='right'>
                   {
                     r.reward_claimed ? 
-                    <p>bought</p>
+                      <Claimed>Used</Claimed>
                     :
                     user.points >= r.reward_cost ?
-                      <Button onClick={ () => claimReward(user.id, r.id, history, subPoints, r.reward_cost) }>Buy</Button>
+                      <SpendButton onClick={ () => claimReward(user.id, r.id, history, subPoints, r.reward_cost) }>Buy</SpendButton>
                       :
-                      <Button disabled>Buy</Button>
+                      <SpendButton disabled>Buy</SpendButton>
                   }
-                </Card.Content>
-              </Card> 
+                </Grid.Column>
+               </Grid.Row>
+              </StyledCard> 
             </Grid.Column>
           </>
         )
@@ -35,6 +46,4 @@ const UserRewardList = ({ rewards, user, subPoints, claimReward, history }) => (
     </Grid>
   </>
 )  
-
 export default UserRewardList;
-
