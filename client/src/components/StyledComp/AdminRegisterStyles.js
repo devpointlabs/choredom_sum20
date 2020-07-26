@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoginContainer = styled.form`
+export const RegisterForm = styled.form`
   width: 300px;
   flex-direction: column;
   position: relative;
@@ -23,7 +23,7 @@ export const LogoContainer = styled.div`
 export const Btn = styled.button`
   border-radius: 8px; 
   border: none;
-  padding: 15px 32px;
+  padding: 15px 25px;
   width: 118px;
   height: 56px;
   font-family: 'Work Sans';
@@ -33,8 +33,9 @@ export const Btn = styled.button`
 `;
 
 export const RegisterBtn = styled.button`
-  border-radius: 8px;
+  border-radius: 8px; 
   border: none;
+  padding: 15px 3px;
   width: 266px;
   height: 56px;
   font-family: 'Work Sans';
@@ -44,7 +45,7 @@ export const RegisterBtn = styled.button`
 `;
 
 export const RegisterBtnContainer = styled.div`
-  padding: 0px 150px
+  padding: 0px 13px
   
 `;
 
