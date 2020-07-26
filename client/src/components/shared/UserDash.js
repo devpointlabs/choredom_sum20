@@ -12,6 +12,16 @@ class UserDash extends React.Component {
       this.props.getAllRewards(this.props.user.id)
   }
 
+  rewardMessage = () => {
+    let rewardArray = []
+    for (let i=0; i < this.props.rewards.length; i++) {
+      if ( this.props.rewards[i].reward_claimed ) {
+        rewardArray.push(this.props.reward[i])
+      }
+    }
+      return rewardArray.length !== 0 ? "My Rewards" : "Keep working hard"
+  }
+
   render() {
     const { points } = this.props.user
     return (
@@ -32,9 +42,10 @@ class UserDash extends React.Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Column>
+          { this.rewardMessage() }
           { this.props.rewards.map( r => r.reward_claimed ?
           <ClaimedReward {...r} usedReward={this.props.useReward}/>
-          : "Keep working hard to earn a reward"
+          : ""
            )}
         </Grid.Column>
       </Grid>
