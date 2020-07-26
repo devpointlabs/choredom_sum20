@@ -12,7 +12,7 @@ const UserRewardList = ({ rewards, user, subPoints, claimReward, history }) => (
             <Grid.Column>
               <StyledCard>
                 <Grid.Row>
-                <RewardNameText>{r.reward_name}</RewardNameText>
+                  <RewardNameText>{r.reward_name}</RewardNameText>
                 </Grid.Row>
                 <Grid.Row>
                   <RewardDescriptionText>{ r.reward_description }</RewardDescriptionText>

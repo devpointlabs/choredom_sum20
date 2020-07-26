@@ -3,25 +3,6 @@ import { Grid, Segment } from 'semantic-ui-react'
 import Fams from '../fams/Fams';
 import Rewards from '../rewards/Rewards';
 import Tasks from '../tasks/Tasks'
-import styled from 'styled-components';
-
-const fontSize = (size) => {
-  switch(size) {
-    case 'large':
-      return '24px';
-    case 'small':
-      return '14px';
-    default:
-      return '2rem';
-  }
-}
-
-const HeaderText = styled.h1`
-  color: black
-  font-family: Work Sans;
-  text-align: center;
-  font-size: ${props => fontSize(props.fSize)} !important;
-`
 
 const AdminDash = () => (
   <>
