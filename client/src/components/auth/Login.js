@@ -1,6 +1,8 @@
 import React from 'react';
 import { AuthConsumer, } from "../../providers/AuthProvider";
-import { Button, Form, Segment, Header, Container } from 'semantic-ui-react';
+import { LogoContainer, LoginContainer, LogoImg, Btn, Input, InputLabel, RegisterBtn, RegisterBtnContainer } from '../styledComp/LoginStyles';
+import {  Segment, Grid } from 'semantic-ui-react';
+import Logo from '../../images/Logo.svg';
 import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
@@ -21,37 +23,49 @@ class Login extends React.Component {
     const { email, password, } = this.state;
   
     return (
-      <Segment basic>
-        <Header as='h1' textAlign='center'>Login</Header>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Input
-            label="Email"
-            autoFocus
-            required         
-            name='email'
-            value={email}
-            placeholder='Email'
-            onChange={this.handleChange}
-          />
-          <Form.Input
-            label="Password"
-            required
-            name='password'
-            value={password}
-            placeholder='Password'
-            type='password'
-            onChange={this.handleChange}
-          />
-          <Segment textAlign='left' basic>
-            <Button primary type='submit'>Log In</Button>
-          </Segment>
-          <Container textAlign='center'>
-            <Link textAlign='center' to="/register">
-              <Button type="button">I don't have an account </Button>
-            </Link>
-          </Container>
-        </Form>
-      </Segment>
+      <>
+        <Grid centered columns={2} divided>
+            <Grid.Column>
+                  <LoginContainer onSubmit={this.handleSubmit}>
+                    <LogoContainer>
+                      <LogoImg src={Logo} />
+                    </LogoContainer>
+                  <InputLabel position='left'>
+                    Email
+                  </InputLabel>
+                    <Input
+                      label="Email"
+                      autoFocus
+                      required         
+                      name='email'
+                      value={email}
+                      placeholder='Email'
+                      onChange={this.handleChange}
+                    />
+                  <InputLabel position='left'>
+                    Password
+                  </InputLabel>
+                    <Input
+                      label="Password"
+                      required
+                      name='password'
+                      value={password}
+                      placeholder='Password'
+                      type='password'
+                      onChange={this.handleChange}
+                    />
+                    <Segment basic textAlign='left'>
+                      <Btn>Log In</Btn>
+                    </Segment>
+                    <RegisterBtnContainer>
+                      <Link to="/register">
+                        <RegisterBtn type="button">I don't have an account </RegisterBtn>
+                      </Link>
+                    </RegisterBtnContainer>
+                  </LoginContainer>
+            </Grid.Column>
+        </Grid>
+      </>
     )
   }
 }
