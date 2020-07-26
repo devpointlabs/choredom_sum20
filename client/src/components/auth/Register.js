@@ -1,7 +1,7 @@
 import React from 'react';
 import { AuthConsumer, } from "../../providers/AuthProvider";
-import { RegisterContainer, LogoContainer, LogoImg, Btn, RegisterInput, RegisterInputLabel, RegisterBtn, RegisterBtnContainer } from '../styledComp/RegisterStyles';
-import { Button, Form, Segment, Header, Grid} from 'semantic-ui-react';
+import { RegisterContainer, LogoContainer, LogoImg, RegisterInput, RegisterInputLabel, RegisterBtn, HaveAccountBtn, RegisterAdminBtn } from '../styledComp/RegisterStyles';
+import { Segment, Grid} from 'semantic-ui-react';
 import Logo from '../../images/Logo.svg';
 import { Link, } from 'react-router-dom';
 
@@ -38,6 +38,7 @@ class Register extends React.Component {
               Name
             </RegisterInputLabel>
             <RegisterInput
+              label="Name"
               autoFocus
               required     
               name='name'
@@ -49,6 +50,7 @@ class Register extends React.Component {
               Email
             </RegisterInputLabel>
             <RegisterInput
+              label="Email"
               required
               autoFocus
               name='email'
@@ -60,6 +62,7 @@ class Register extends React.Component {
               Password
             </RegisterInputLabel>
             <RegisterInput
+              label="Password"
               required
               name='password'
               value={password}
@@ -71,6 +74,7 @@ class Register extends React.Component {
               Password Confirmation
             </RegisterInputLabel>
             <RegisterInput
+              label="Password Confirmation"
               required
               name='passwordConfirmation'
               value={passwordConfirmation}
@@ -78,20 +82,25 @@ class Register extends React.Component {
               type='password'
               onChange={this.handleChange}
             />
+
+            <Segment textAlign='left' basic>
+              <RegisterBtn primary type='submit'>Register</RegisterBtn>
+            </Segment>
+
+            <Segment textAlign='left' basic>
+            <RegisterAdminBtn  as={Link} to="/adminregister">
+              Register as an Admin
+            </RegisterAdminBtn>
+            </Segment>
             
             <Segment textAlign='left' basic>
-              <Button primary type='submit'>Register</Button>
+            <HaveAccountBtn as={Link} to="/login">
+              I already have an account
+            </HaveAccountBtn>
             </Segment>
-            <Segment textAlign='center' basic>
-              <Button as={Link} to="/adminregister">
-                Register as an Admin
-              </Button>
-              <Button as={Link} to="/login">
-                I already have an account
-              </Button>
-            </Segment>
-          </RegisterContainer>
-        </Grid.Column>
+            
+            </RegisterContainer>
+          </Grid.Column>
       </Grid>
     )
   }

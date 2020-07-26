@@ -5,7 +5,7 @@ export const LoginContainer = styled.form`
   flex-direction: column;
   position: relative;
   padding: 10px 10px;
-  top: 100px;
+  top: 10px;
 `;
 
 export const LogoImg = styled.img`
@@ -54,6 +54,7 @@ export const Input = styled.input`
   height: 46px;
   border: none;
   background: #F2F3F4;
+  border-bottom: 1px solid #000000;
 `;
 
 export const InputLabel = styled.text`
