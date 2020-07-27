@@ -1,8 +1,7 @@
 import React from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import UserTasks from '../tasks/UserTasks'
-import { Header } from 'semantic-ui-react'
-import styled from 'styled-components';
+import { HeaderText, PText } from '../styledComp/EarnStyles';
 
 const DivContainer = styled.div`
   background: linear-gradient(to top right, pink, gold);
@@ -26,9 +25,9 @@ const Earn = () => (
     <DivContainer>
       <h1 textAlign = "center"> Earn Points</h1>
       <Segment>
-        <p textAlign="center"> Complete tasks to earn points </p>
+        <PText> Complete tasks to earn points </PText>
         <Container>
-          < UserTasks />
+          <UserTasks />
         </Container>
       </Segment>
     </DivContainer>
