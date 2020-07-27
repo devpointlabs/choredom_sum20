@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Grid } from 'semantic-ui-react';
 import { FamConsumer } from '../../providers/FamProvider';
+import { TextInput, InputLabel, Btn, } from '../styledComp/TaskFormStyles';
+
 
 class RewardForm extends Component {
   state = { famId: null, reward_name: '', reward_description: '', reward_cost: '', reward_claimed: false, reward_used: false, }
@@ -41,40 +43,69 @@ class RewardForm extends Component {
   render() {
     const { reward_name, reward_description, reward_cost, famId } = this.state
     return(
+      <>
+      <Grid centered columns={1} divided>
+      <Grid.Column>
       <Form onSubmit={this.handleSubmit}>
-        <Form.Input
+
+        <Grid.Row>
+          <InputLabel position='left'>
+            Reward Name
+          </InputLabel>
+        </Grid.Row>
+        <Grid.Row>
+        <TextInput
           name='reward_name'
           value={reward_name}
           onChange={this.handleChange}
-          label='Reward Name'
           required
         />
-        <Form.Input
+        </Grid.Row>
+
+        <Grid.Row>
+          <InputLabel position='left'>
+            Reward Description
+          </InputLabel>
+        </Grid.Row>
+        <TextInput
           name='reward_description'
           value={reward_description}
           onChange={this.handleChange}
-          label='Reward Description'
           required
         />
-        <Form.Input
+
+        <Grid.Row>
+          <InputLabel position='left'>
+            Reward Cost
+          </InputLabel>
+        </Grid.Row>
+        <Grid.Row></Grid.Row>
+        <TextInput
           name='reward_cost'
           value={reward_cost}
           onChange={this.handleChange}
-          label='Reward Cost'
           required
         />
+
+         <Grid.Row>
+          <InputLabel position='left'>
+            Select Family
+          </InputLabel>
+         </Grid.Row>
          <Form.Select
           name='famId'
           value={famId}
-          label='Family'
           placeholder='Select Family'
           onChange={this.handleChange}
           fluid
           options={this.setFamilies()}
         />
 
-        <Form.Button>Submit</Form.Button>
+        <Btn>Submit</Btn>
       </Form>
+      </Grid.Column>
+      </Grid>
+    </>
     )
   }
 }

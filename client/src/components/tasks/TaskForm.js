@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Form } from 'semantic-ui-react';
+import { Form, Grid } from 'semantic-ui-react';
 import { FamConsumer } from '../../providers/FamProvider';
+import { TextInput, InputLabel, Btn, } from '../styledComp/TaskFormStyles';
+
 
 class TaskForm extends Component {
   state = { famId: null, task_name: '', task_description: '', task_value: '' }
@@ -41,40 +43,69 @@ class TaskForm extends Component {
   render() {
     const { task_name, task_description, task_value, famId } = this.state
     return(
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Input
-          name='task_name'
-          value={task_name}
-          onChange={this.handleChange}
-          label='Task Name'
-          required
-        />
-        <Form.Input
-          name='task_description'
-          value={task_description}
-          onChange={this.handleChange}
-          label='Task Description'
-          required
-        />
-        <Form.Input
-          name='task_value'
-          value={task_value}
-          onChange={this.handleChange}
-          label='Task Value'
-          required
-        />
-        <Form.Select
-            name='famId'
-            value={famId}
-            label='Family'
-            placeholder='Select Family'
-            onChange={this.handleChange}
-            fluid
-            options={this.setFamilies()}
-          />
+      <>
+      <Grid centered columns={1} divided>
+      <Grid.Column>
+        <Form onSubmit={this.handleSubmit}>
+          <Grid.Row>
+          <InputLabel position='left'>
+            Name
+          </InputLabel>
+          </Grid.Row>
 
-        <Form.Button>Submit</Form.Button>
-      </Form>
+          <Grid.Row>
+          <TextInput
+            name='task_name'
+            value={task_name}
+            onChange={this.handleChange}
+            required
+          />
+          </Grid.Row>
+
+          <Grid.Row>
+          <InputLabel position='left'>
+            Description
+          </InputLabel>
+          </Grid.Row>
+
+          <Grid.Row>
+          <TextInput
+            value={task_description}
+            onChange={this.handleChange}
+            required
+          />
+          </Grid.Row>
+
+          <Grid.Row>
+          <InputLabel position='left'>
+            Point Value
+          </InputLabel>
+          </Grid.Row>
+
+          <Grid.Row>
+          <TextInput
+            name='task_value'
+            value={task_value}
+            onChange={this.handleChange}
+            required
+          />
+          </Grid.Row>
+          <InputLabel position='left'>
+            Select Family
+          </InputLabel>
+          <Form.Select
+              name='famId'
+              value={famId}
+              placeholder='Select Family'
+              onChange={this.handleChange}
+              fluid
+              options={this.setFamilies()}
+            />
+          <Btn>Submit</Btn>
+        </Form>
+        </Grid.Column>
+        </Grid>
+      </>
     )
   }
 }
