@@ -6,6 +6,7 @@ import { Image, Divider } from 'semantic-ui-react';
 import Fams from '../fams/Fams';
 import Logo from '../../images/Logo.svg';
 import styled from 'styled-components'
+import { SegmentText } from '../styledComp/DashStyles';
 
 const LogoImg = styled.img`
   width: 167px;
@@ -73,8 +74,8 @@ class Navbar extends Component {
           </Link>
           <MenuItem>
             <Modal trigger={<StyledButton>My Families</StyledButton>} centered={false}>
-              <Modal.Header>My Families</Modal.Header>
                 <Modal.Content>
+                  <SegmentText>My Families</SegmentText>
                   < Fams />
                 </Modal.Content>
             </Modal>
