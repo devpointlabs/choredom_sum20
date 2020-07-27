@@ -4,6 +4,22 @@ import { Menu, Button, Modal, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
 import { Image, Divider } from 'semantic-ui-react';
 import Fams from '../fams/Fams';
+import Logo from '../../images/Logo.svg';
+import styled from 'styled-components'
+
+const LogoImg = styled.img`
+  width: 167px;
+  height: 31px;
+`;
+
+const MenuItem = styled(Menu.Item)`
+  font-family: Work Sans;
+  color: black;
+`
+const StyledButton = styled(Button)`
+  font-family: Work Sans !Important;
+  `
+
 
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
@@ -17,7 +33,7 @@ class Navbar extends Component {
           {
             user.admin ?
               <Link to='/admindash'>
-                <Menu.Item
+                <MenuItem
                   id='dashboard'
                   name='dashboard'
                   active={location.pathname === '/admindash'}
@@ -25,7 +41,7 @@ class Navbar extends Component {
               </Link>
               :
             <Link to='/userdash' >
-              <Menu.Item
+              <MenuItem
                 id='dashboard'
                 name='dashboard'
                 active={location.pathname === '/userdash'}
@@ -33,14 +49,14 @@ class Navbar extends Component {
             </Link>
           }
           <Link to='/earn'>
-            <Menu.Item
+            <MenuItem
               id='earn'
               name='Earn'
               active={location.pathname === '/earn'}
             />
           </Link>
           <Link to='/spend'>
-            <Menu.Item
+            <MenuItem
               id='spend'
               name='Spend'
               active={location.pathname === '/spend'}
@@ -55,28 +71,28 @@ class Navbar extends Component {
               circular
             />
           </Link>
-          <Menu.Item>
-            <Modal trigger={<Button>My Families</Button>} centered={false}>
+          <MenuItem>
+            <Modal trigger={<StyledButton>My Families</StyledButton>} centered={false}>
               <Modal.Header>My Families</Modal.Header>
                 <Modal.Content>
                   < Fams />
                 </Modal.Content>
             </Modal>
-          </Menu.Item>
+          </MenuItem>
         </Menu.Menu>
       )
     } else {
       return (
         <Menu.Menu position='right'>
           <Link to='/login'>
-            <Menu.Item
+            <MenuItem
               id='login'
               name='login'
               active={location.pathname === '/login'}
             />
           </Link>
           <Link to='/register'>
-            <Menu.Item
+            <MenuItem
               id='register'
               name='register'
               active={location.pathname === '/register'}
@@ -92,11 +108,12 @@ class Navbar extends Component {
       <div>
         <Menu pointing secondary>
           <Link to='/admindash'>
-            <Menu.Item
+            < LogoImg src={Logo} />
+            {/* <Menu.Item
               name='home'
               id='home'
               active={this.props.location.pathname === '/'}
-            />
+            /> */}
           </Link>
             { this.rightNavItems() }
         </Menu>
