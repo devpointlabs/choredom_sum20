@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form } from 'semantic-ui-react';
 import { FamGroupConsumer } from '../../providers/FamGroupProvider';
+import { TextInput, InputLabel, Btn, } from '../styledComp/FormStyles';
 
 class FamForm extends Component {
   state = { fam_name: '', fam_admins: '', fam_members: '' }
@@ -36,16 +37,20 @@ class FamForm extends Component {
   render() {
     const { fam_name, fam_admins, fam_members } = this.state
     return(
+    <>
       <Form onSubmit={this.handleSubmit}>
-        <Form.Input
+        <InputLabel position='left'>
+          Family Name
+        </InputLabel>
+        <TextInput
           name='fam_name'
           value={fam_name}
           onChange={this.handleChange}
-          label='Family Name'
           required
         />
-        <Form.Button>Submit</Form.Button>
+        <Btn>Submit</Btn>
       </Form>
+    </>
     )
   }
 }

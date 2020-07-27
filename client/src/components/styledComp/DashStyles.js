@@ -23,6 +23,7 @@ export const StyledButton = styled.button`
 	border: none;
 	cursor: pointer;
   `
+  
   export const SegmentText = styled.p`
   font-family: Work Sans;
   color: black;
