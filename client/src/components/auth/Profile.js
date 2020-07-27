@@ -3,6 +3,7 @@ import { AuthConsumer, } from "../../providers/AuthProvider";
 import { Form, Grid, Image, Container, Divider, Header, Button, Menu } from 'semantic-ui-react';
 import Dropzone from 'react-dropzone';
 import { Link } from 'react-router-dom'
+import { ProfilePicContainer } from '../styledComp/ProfileStyles'
 
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
@@ -47,20 +48,26 @@ class Profile extends React.Component {
   profileView = () => {
     const { auth: { user }, } = this.props;
     return (
-      <Fragment>
+      <Grid>
         <Grid.Column width={4}>
+          <Grid.Row>
+          <ProfilePicContainer>
           <Image src={user.image || defaultImage} 
           circular
           size= 'small'
           target='_blank'
           as='a'
           />
-        </Grid.Column>
-        <Grid.Column width={8}>
+          </ProfilePicContainer>
+          </Grid.Row>
+        <Grid.Row>
           <Header as="h1">{user.name}</Header>
+          </Grid.Row>
+          <Grid.Row>
           <Header as="h1">{user.email}</Header>
+          </Grid.Row>
         </Grid.Column>
-      </Fragment>
+      </Grid>
     )
   }
 

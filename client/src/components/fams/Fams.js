@@ -5,6 +5,7 @@ import FamList from './FamList';
 import { Button, Modal, Grid } from 'semantic-ui-react';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { withRouter } from  'react-router-dom';
+import { StyledButton } from '../styledComp/InitialStyles'
 
 class Fams extends Component {
   state = { modalopen: false, }
@@ -23,7 +24,7 @@ class Fams extends Component {
     return (
       <>
         <FamList fams={fams} />
-          <Modal trigger={<Button onClick={() => this.open()}>Start a new family group</Button>} centered={false} open={modalopen} onClose={this.close}>
+          <Modal trigger={<StyledButton onClick={() => this.open()}>Start a new family group</StyledButton>} centered={false} open={modalopen} onClose={this.close}>
             <Modal.Header>New Family Group</Modal.Header>
             <Modal.Content>
               <FamForm addFam={addFam} userId={user.id} history={history} close={this.close}/>
