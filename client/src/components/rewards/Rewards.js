@@ -3,10 +3,11 @@ import { RewardConsumer } from '../../providers/RewardProvider';
 import RewardForm from './RewardForm';
 import RewardList from './RewardList';
 import { AuthConsumer } from '../../providers/AuthProvider';
-import { Button, Modal } from 'semantic-ui-react';
+import { Modal, Grid, Icon } from 'semantic-ui-react';
 
 class Rewards extends React.Component {
   state = { modalopen: false, }
+  
   componentDidMount() {
     this.props.getAllRewards(this.props.user.id)
   }
@@ -19,13 +20,21 @@ class Rewards extends React.Component {
     const { modalopen } = this.state
     return (
       <>
-       <h1>Rewards</h1>
-        <Modal trigger={<Button onClick={() => this.open()}>Create Reward</Button>} centered={false} open={modalopen} onClose={this.close}>
-          <Modal.Header>Create New Reward</Modal.Header>
-          <Modal.Content>
-            <RewardForm addReward={addReward} user_id={user.id} close={this.close}/>  
-          </Modal.Content>
-        </Modal>
+        <Grid>
+          <Grid.Row columns={2}>
+            <Grid.Column textAlign='left'>
+              <h1>Available Rewards</h1>
+            </Grid.Column>
+            <Grid.Column textAlign='right'>
+              <Modal trigger={<Icon color="272643" size="big" name='plus circle' onClick={() => this.open()} />} centered={false} open={modalopen} onClose={this.close}>
+                <Modal.Header>Create New Reward</Modal.Header>
+                <Modal.Content>
+                  <RewardForm addReward={addReward} user_id={user.id} close={this.close}/>  
+                </Modal.Content>
+              </Modal>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
         <br/>
         {
           rewards ? 
@@ -36,6 +45,7 @@ class Rewards extends React.Component {
     )
   }
 }
+
 const ConnectedRewards = (props) => (
   <RewardConsumer>
     {
@@ -45,6 +55,7 @@ const ConnectedRewards = (props) => (
     }
   </RewardConsumer>
 )
+
 const MegaRewards = (props) => (
   <AuthConsumer>
     {
@@ -52,4 +63,5 @@ const MegaRewards = (props) => (
     }
   </AuthConsumer>
 )
+
 export default MegaRewards;

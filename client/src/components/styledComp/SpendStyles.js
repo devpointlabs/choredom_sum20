@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Card, Segment } from 'semantic-ui-react';
 
+
 export const SpendButton = styled.a`
 font-family: Work Sans;
 padding-right: 15px !important;
@@ -18,10 +19,8 @@ export const RewardNameText = styled(Card.Content)`
   font-size: 24px;
   text-overflow: ellipsis;
   white-space: nowrap;
-
-
-
 `
+
 export const RewardDescriptionText = styled(Card.Content)`
   font-family: Work Sans;
   font-size: 16px;
@@ -42,19 +41,21 @@ export const RewardCostText = styled(Card.Content)`
   color: #10D60D;
   font-weight: bold;
 `
+
 export const Claimed = styled(Card.Content)`
   font-family: Work Sans;
   font-size: 14px;
   padding-right: 15px !important;
   padding-bottom: 10px !important;
   color: red;
-
 `
+
 export const StyledCard = styled(Card)`
   border: 1px white !important;
   border-radius: 16px !important;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .16), 0 4px 10px 0 rgba(0, 0, 0, 0.16) !important;
 `
+
 export const HeaderText = styled.h2`
   font-size: 24px;
   font-family: Work Sans;
@@ -66,5 +67,3 @@ export const PText = styled.p`
   font-size: 18px;
   padding-bottom: 15px;
 `
-
-;

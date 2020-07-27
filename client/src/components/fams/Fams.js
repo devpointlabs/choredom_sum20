@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FamConsumer } from '../../providers/FamProvider';
 import FamForm from './FamForm';
 import FamList from './FamList';
-import { Button, Modal, Grid } from 'semantic-ui-react';
+import { Button, Modal, Grid, Card, } from 'semantic-ui-react';
 import { AuthConsumer } from '../../providers/AuthProvider';
 import { withRouter } from  'react-router-dom';
 import { StyledButton } from '../styledComp/InitialStyles'
@@ -23,13 +23,21 @@ class Fams extends Component {
     const { modalopen } = this.state
     return (
       <>
-        <FamList fams={fams} />
-          <Modal trigger={<StyledButton onClick={() => this.open()}>Start a new family group</StyledButton>} centered={false} open={modalopen} onClose={this.close}>
-            <Modal.Header>New Family Group</Modal.Header>
-            <Modal.Content>
-              <FamForm addFam={addFam} userId={user.id} history={history} close={this.close}/>
-            </Modal.Content>
-          </Modal>
+        <Grid columns={5} padded doubling>
+          <FamList fams={fams} />
+          <Grid.Column>
+            <Card>
+              <Card.Content>
+              <Modal trigger={<StyledButton onClick={() => this.open()}>Start a new family group</StyledButton>} centered={false} open={modalopen} onClose={this.close}>
+                  <Modal.Header>New Family Group</Modal.Header>
+                  <Modal.Content>
+                    <FamForm addFam={addFam} userId={user.id} history={history} close={this.close}/>
+                  </Modal.Content>
+                </Modal>
+            </Card.Content>
+            </Card>
+          </Grid.Column>
+        </Grid>
       </>
     )
   }

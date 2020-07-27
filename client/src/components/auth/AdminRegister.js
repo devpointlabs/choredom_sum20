@@ -1,7 +1,10 @@
 import React from 'react';
 import { AuthConsumer, } from "../../providers/AuthProvider";
-import { Button, Form, Segment, Header, } from 'semantic-ui-react';
+import { Grid, Button, Segment, Header, } from 'semantic-ui-react';
+import { RegisterForm, LogoContainer, LogoImg, Btn, Input, InputLabel, RegisterBtn, RegisterBtnContainer } from '../styledComp/AdminRegisterStyles';
 import { Link, } from 'react-router-dom';
+import Logo from '../../images/Logo.svg';
+
 
 class AdminRegister extends React.Component {
   state = { name: '', email: '', password: '', passwordConfirmation: '', admin: true };
@@ -26,56 +29,75 @@ class AdminRegister extends React.Component {
     const { email, password, passwordConfirmation, name } = this.state;
     
     return (
-      <Segment basic>
-        <Header as='h1' textAlign='center'>Admin Register</Header>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Input
-            label="Name"
-            autoFocus
-            required     
-            name='name'
-            value={name}
-            placeholder='Name'
-            onChange={this.handleChange}
-          />
-          <Form.Input
-            label="Email"
-            required
-            autoFocus
-            name='email'
-            value={email}
-            placeholder='Email'
-            onChange={this.handleChange}
-          />
-          <Form.Input
-            label="Password"
-            required
-            name='password'
-            value={password}
-            placeholder='Password'
-            type='password'
-            onChange={this.handleChange}
-          />
-          <Form.Input
-            label="Password Confirmation"
-            required
-            name='passwordConfirmation'
-            value={passwordConfirmation}
-            placeholder='Password Confirmation'
-            type='password'
-            onChange={this.handleChange}
-          />
-          
-          <Segment textAlign='left' basic>
-            <Button primary type='submit'>Register</Button>
-          </Segment>
-          <Segment textAlign='center' basic>
-            <Button as={Link} to="/register">
-              Back to Normal Register
-            </Button>
-          </Segment>
-        </Form>
-      </Segment>
+      <>
+        <Grid centered columns={2} divided>
+          <Grid.Column>
+            <RegisterForm onSubmit={this.handleSubmit}>
+              <LogoContainer>
+                <LogoImg src={Logo} />
+              </LogoContainer>
+              <InputLabel position='left'>
+                Name
+              </InputLabel>
+              <Input
+                label="Name"
+                autoFocus
+                required     
+                name='name'
+                value={name}
+                placeholder='Name'
+                onChange={this.handleChange}
+              />
+              <InputLabel position='left'>
+                    Email
+              </InputLabel>
+              <Input
+                label="Email"
+                required
+                autoFocus
+                name='email'
+                value={email}
+                placeholder='Email'
+                onChange={this.handleChange}
+              />
+              <InputLabel position='left'>
+                Password
+              </InputLabel>
+              <Input
+                label="Password"
+                required
+                name='password'
+                value={password}
+                placeholder='Password'
+                type='password'
+                onChange={this.handleChange}
+              />
+              <InputLabel position='left'>
+                Password Confirmation
+              </InputLabel>
+              <Input
+                label="Password Confirmation"
+                required
+                name='passwordConfirmation'
+                value={passwordConfirmation}
+                placeholder='Password Confirmation'
+                type='password'
+                onChange={this.handleChange}
+              />
+              
+              <Segment textAlign='left' basic>
+                <Btn primary type='submit'>Register</Btn>
+              </Segment>
+              
+              <RegisterBtnContainer>
+                <RegisterBtn as={Link} to="/register">
+                  Back to Normal Register
+                </RegisterBtn>
+              </RegisterBtnContainer>
+            </RegisterForm>
+          </Grid.Column>
+        </Grid>
+      </>
     )
   }
 }
