@@ -33,7 +33,7 @@ const App = () => (
       <FetchUser>
         <Container>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Login} />
             <ProtectedRoute exact path='/profile' component={Profile} />
             <Route exact path="/login" component={Login} /> 
             <Route exact path="/register" component={Register} />
@@ -56,8 +56,10 @@ const App = () => (
           </Switch>
         </Container>
       </FetchUser>
+      
   </>
 )
+
 
 export default App;
 
