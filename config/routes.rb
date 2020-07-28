@@ -20,5 +20,7 @@ Rails.application.routes.draw do
     post '/:fam_id/join', to: 'famgroups#join'
     get '/:id/usereward', to: 'rewards#usedReward'
   end
+
+  get '*other', to: 'static#index'
 end
 
