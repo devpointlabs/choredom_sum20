@@ -11,7 +11,7 @@ export const LoginContainer = styled.form`
 export const LogoImg = styled.img`
   width: 334.35px;
   height: 61px;
-  
+  font-family: 'Work Sans';
 `;
 
 export const LogoContainer = styled.div`
