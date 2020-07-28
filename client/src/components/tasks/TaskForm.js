@@ -70,6 +70,7 @@ class TaskForm extends Component {
 
           <Grid.Row>
           <TextInput
+            name='task_description'
             value={task_description}
             onChange={this.handleChange}
             required

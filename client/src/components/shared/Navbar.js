@@ -7,12 +7,13 @@ import Fams from '../fams/Fams';
 import Logo from '../../images/Logo.svg';
 import styled from 'styled-components'
 import { SegmentText } from '../styledComp/DashStyles';
+import '../../index.css'
 
 const LogoImg = styled.img`
   width: 167px;
   height: 31px;
+  font-family: Work Sans !important;
 `;
-
 const MenuItem = styled(Menu.Item)`
   font-family: Work Sans;
   color: black;
@@ -20,12 +21,8 @@ const MenuItem = styled(Menu.Item)`
 const StyledButton = styled(Button)`
   font-family: Work Sans !Important;
   `
-
-
 const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
-
 class Navbar extends Component {
-
   rightNavItems = () => {
     const { auth: { user, handleLogout, }, location, } = this.props;
     if (user) {
@@ -103,7 +100,6 @@ class Navbar extends Component {
       )
     }
   }
-
   render() {
     return (
       <div>
@@ -122,7 +118,6 @@ class Navbar extends Component {
     )
   }
 }
-
 export class ConnectedNavbar extends React.Component {
   render() {
     return (
@@ -134,5 +129,4 @@ export class ConnectedNavbar extends React.Component {
     )
   }
 }
-
 export default withRouter(ConnectedNavbar);
