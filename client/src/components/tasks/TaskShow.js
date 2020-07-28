@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { TaskConsumer } from '../../providers/TaskProvider';
-import { Grid, Button } from 'semantic-ui-react';
+import { Grid, Modal, Button } from 'semantic-ui-react';
 import TaskForm from './TaskForm';
 import { StyledSegment, SegmentHeader, SegmentText, SegmentCost } from '../styledComp/DashStyles';
+
 
 class TaskShow extends Component {
   state = { editing: false }
@@ -33,6 +34,7 @@ class TaskShow extends Component {
             history={history}
           />
           :
+          
           <Button onClick={this.toggleUpdate}>
             Edit
           </Button>

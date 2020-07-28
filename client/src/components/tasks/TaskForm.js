@@ -34,7 +34,7 @@ class TaskForm extends Component {
     } else {
       this.props.addTask(this.props.user_id, this.state)
     }
-    this.props.close()
+    // this.props.close()
     this.setState({ task_name: '', task_description: '', task_value: '', famId: null })
   }
 
