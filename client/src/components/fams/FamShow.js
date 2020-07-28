@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { FamConsumer } from '../../providers/FamProvider';
-import { Button, Card, Grid, Modal } from 'semantic-ui-react';
+import {Modal, Grid } from 'semantic-ui-react';
 import FamForm from './FamForm';
 import AddUserForm from './AddUserForm';
 import { FamGroupConsumer } from '../../providers/FamGroupProvider';
 import axios from 'axios';
 import FamMember from './FamMember';
+import { Box2, StyledGridRow, HeaderText, StyledBox, Header2, StyledButton, StyledContainer, MembersContainer, AdminContainer, ButtonContainer, StyledHeaderContainer } from '../styledComp/FamShowStyles'
+import '../../index.css'
 
 class FamShow extends Component {
   state = { editing: false, modalopen: false, members: []}
@@ -28,17 +30,44 @@ class FamShow extends Component {
     const { editing, modalopen, members } = this.state
     const { updateFam, deleteFam, history } = this.props
     return(
-      <>
-      <Grid.Column>
-        <Card>
-          <Card.Content header={fam_name} />
-          <Card.Content>
+      <StyledContainer>
+      <Grid columns={1} divided>
+        <Grid.Column>
+      
+      <HeaderText>My Family</HeaderText>
+        <br/>
+        <StyledGridRow>
+          <StyledBox>
+            <StyledHeaderContainer>
+            <Header2>Family Admins</Header2>
+            </StyledHeaderContainer>
+            <AdminContainer>
             {members.map( m => m.admin ? <FamMember {...m} /> : "" )}
-          </Card.Content>
-          <Card.Content extra>
+            </AdminContainer>
+            </StyledBox>
+            </StyledGridRow>
+            <br/>
+            <br/>
+
+            <StyledGridRow>
+              <Box2>
+          <Header2>Family Members</Header2>
+          <br/>
+          <MembersContainer>
             {members.map( m => m.admin === false || m.admin === null ? <FamMember {...m}  /> : "" )}
-          </Card.Content>
-          <Card.Content>
+          </MembersContainer>
+          </Box2>
+          </StyledGridRow>
+            <br/>
+          <Grid.Row>
+
+          <Modal trigger={<StyledButton onClick={() => this.open()}>Add Member</StyledButton>} centered={false} open={modalopen} onClose={this.close}>
+                <Modal.Header>New Family Group</Modal.Header>
+                <Modal.Content>
+                  <AddUserForm fam_id={id} addMember={this.props.addMember} history={history} close={this.close}/>
+                </Modal.Content>
+              </Modal>
+       
             { editing ?
               <FamForm
                 user_id={user_id}  
@@ -51,24 +80,19 @@ class FamShow extends Component {
                 history={history}
               />
               :
-              <Button onClick={this.toggleUpdate}>
+              <StyledButton onClick={this.toggleUpdate}>
                 Edit
-              </Button>
+              </StyledButton>
             }
-              <Button onClick={() => deleteFam(id, history)}>
+              <StyledButton onClick={() => deleteFam(id, history)}>
                 Delete
-              </Button>
+              </StyledButton>
 
-              <Modal trigger={<Button onClick={() => this.open()}>Add Member</Button>} centered={false} open={modalopen} onClose={this.close}>
-                <Modal.Header>New Family Group</Modal.Header>
-                <Modal.Content>
-                  <AddUserForm fam_id={id} addMember={this.props.addMember} history={history} close={this.close}/>
-                </Modal.Content>
-              </Modal>
-          </Card.Content>
-        </Card>
-      </Grid.Column>
-      </>
+            
+              </Grid.Row>
+              </Grid.Column>
+              </Grid>
+          </StyledContainer>
     )
   }
 }

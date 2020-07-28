@@ -3,6 +3,7 @@ import { Grid } from 'semantic-ui-react';
 import { SpendButton, RewardNameText, RewardDescriptionText, RewardCostText, Claimed, StyledCard } from '../styledComp/SpendStyles';
 import '../../index.css'
 
+
 const UserRewardList = ({ rewards, user, subPoints, claimReward, history }) => (
   <>
     <Grid columns={3}>

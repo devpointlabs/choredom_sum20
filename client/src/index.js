@@ -9,6 +9,7 @@ import RewardProvider from './providers/RewardProvider';
 import TaskProvider from './providers/TaskProvider';
 import { initMiddleware } from 'devise-axios';
 import  FamGroupProvider from './providers/FamGroupProvider';
+import './index.css'
 
 initMiddleware()
 
