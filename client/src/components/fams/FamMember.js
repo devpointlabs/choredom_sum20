@@ -6,7 +6,6 @@ const defaultImage = 'https://d30y9cdsu7xlg0.cloudfront.net/png/15724-200.png';
 
 const FamMember = ({ user, name, image, }) => (
   <>
-    <p> {image} </p>
       <MemberContainer>
       <Grid.Column>
         <Image src={image || defaultImage} 

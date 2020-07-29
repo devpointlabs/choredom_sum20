@@ -6,6 +6,7 @@ export const StyledSegment = styled(Segment)`
   border: 1px white !important;
   border-radius: 16px !important;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .16), 0 4px 10px 0 rgba(0, 0, 0, 0.16) !important;
+  overflow-y: scroll;
 `
 export const SegmentHeader = styled.h1`
   font-family: Work Sans;

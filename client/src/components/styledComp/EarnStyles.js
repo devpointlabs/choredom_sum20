@@ -15,6 +15,7 @@ export const TaskNameText = styled(Card.Content)`
   font-weight: bold;
   padding-left: 15px !important;
   padding-top: 15px !important;
+  padding-bottom: 10px !important;
   font-size: 24px;
   text-overflow: ellipsis;
   white-space: nowrap;
