@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const ProfilePicContainer = styled.div`
-  padding: 20px;
   margin: 20px;
   border:5px solid #2c698d ;
   border-radius: 500px;

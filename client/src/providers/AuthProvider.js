@@ -21,7 +21,12 @@ class AuthProvider extends Component {
     axios.post('/api/auth/sign_in', user)
       .then( res => {
         this.setState({ user: res.data.data })
-        history.push("/admindash")
+        if(user.admin) {
+          history.push("/admindash")
+        } else {
+          history.push("/userdash")
+        }
+        
       })
       .catch( err => {
         console.log(err)
